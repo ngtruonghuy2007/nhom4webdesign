@@ -1,0 +1,124 @@
+/* ==========================================================================
+   CSS CHO CÁC CHI TIẾT NHỎ (MENU, NÚT BẤM, FORM, BÌNH LUẬN)
+   Người thực hiện: Huy
+   ========================================================================== */
+
+/* 1. Menu Điều Hướng (Navigation) */
+.main-nav {
+    background-color: #1a1a1a;
+    padding: 15px 20px;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Yêu cầu sử dụng Flexbox */
+    gap: 20px;
+    justify-content: center; /* Căn giữa menu */
+}
+
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease; /* Chuyển màu mượt mà */
+}
+
+.main-nav a:hover {
+    background-color: #333333;
+}
+
+/* 2. Nút bấm (Buttons) */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #004494;
+}
+
+.btn-full {
+    width: 100%; /* Nút trải dài toàn bộ form đăng ký */
+}
+
+/* 3. Form Đăng Ký (Registration Form) */
+.registration-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Xếp nhãn và ô nhập theo chiều dọc */
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #0056b3; /* Đổi màu viền khi người dùng nhập */
+}
+
+/* 4. Giao diện khung bình luận (Comments Section) */
+.comments-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.comment-item {
+    display: flex; /* Dùng Flexbox để xếp ảnh avatar và text bình luận cạnh nhau */
+    gap: 15px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.comment-item .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+}
+
+.comment-body h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.comment-body p {
+    margin: 0;
+    color: #555;
+    line-height: 1.5;
+}
