@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Tin Tuc Don Gian</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .bai-bao { border-bottom: 1px solid #ccc; margin-bottom: 10px; }
+        input, textarea { display: block; margin-bottom: 10px; width: 300px; }
+    </style>
+</head>
+<body>
+
+    <h3>Đăng bài mới</h3>
+    <input id="tieuDe" placeholder="Tiêu đề">
+    <textarea id="noiDung" placeholder="Nội dung"></textarea>
+    <button onclick="themBai()">Đăng bài</button>
+
+    <h3>Danh sách bài báo</h3>
+    <div id="ketQua"></div>
+
+    <script>
+        // 1. Dữ liệu mẫu
+        var dsBaiBao = [
+            { tieuDe: "Học JS rất vui", noiDung: "Javascript là ngôn ngữ lập trình phổ biến nhất thế giới hiện nay." },
+            { tieuDe: "Chào năm nhất", noiDung: "Chào mừng các bạn tân sinh viên đến với ngành công nghệ thông tin." }
+        ];
+
+        // 2. Hàm hiển thị
+        function hienThi() {
+            var html = "";
+            for (var i = 0; i < dsBaiBao.length; i++) {
+                // Tính số phút (Số chữ chia 200)
+                var soChu = dsBaiBao[i].noiDung.split(" ").length;
+                var phutDoc = Math.ceil(soChu / 200);
+
+                // Cộng dồn vào chuỗi HTML
+                html += "<div class='bai-bao'>" +
+                            "<h4>" + dsBaiBao[i].tieuDe + "</h4>" +
+                            "<p><i>⏱ Đọc mất " + phutDoc + " phút</i></p>" +
+                            "<p>" + dsBaiBao[i].noiDung + "</p>" +
+                        "</div>";
+            }
+            document.getElementById("ketQua").innerHTML = html;
+        }
+
+        // 3. Hàm thêm bài
+        function themBai() {
+            var td = document.getElementById("tieuDe").value;
+            var nd = document.getElementById("noiDung").value;
+
+            if (td == "" || nd == "") {
+                alert("Vui lòng nhập đủ thông tin!");
+            } else {
+                // Thêm vào mảng
+                dsBaiBao.push({ tieuDe: td, noiDung: nd });
+                // Vẽ lại giao diện
+                hienThi();
+                // Xóa trắng ô nhập
+                document.getElementById("tieuDe").value = "";
+                document.getElementById("noiDung").value = "";
+            }
+        }
+
+        // Chạy lần đầu khi mở trang
+        hienThi();
+    </script>
+</body>
+</html>
