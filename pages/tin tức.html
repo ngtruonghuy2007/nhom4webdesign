@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Tin Tức</title>
+    <style>
+        /* ================= BỐ CỤC CHUNG ================= */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background-color: #fff; color: #292828; line-height: 1.4; }
+        
+        /* Căn giữa trang web */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Chia 2 cột chính: Nội dung (Trái) & Sidebar (Phải) */
+        .main-layout {
+            display: flex;
+            gap: 40px; /* Khoảng cách giữa 2 cột */
+            margin-top: 30px;
+        }
+
+        .main-content {
+            flex: 7; /* Cột trái chiếm khoảng 70% */
+        }
+
+        .sidebar {
+            flex: 3; /* Cột phải chiếm khoảng 30% */
+            position: relative;
+        }
+
+        /* Tiêu đề chuyên mục */
+        h2.section-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee; /* Đường kẻ dưới tiêu đề (như phần Giới trẻ) */
+        }
+        
+        /* Căn giữa tiêu đề Tin 24h */
+        .main-content h2.section-title {
+            border-bottom: none;
+        }
+
+        /* ================= TIN 24H (GRID 4 CỘT) ================= */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 cột bằng nhau */
+            gap: 20px; /* Khoảng cách giữa các bài viết */
+        }
+
+        .news-grid article img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .news-grid article h3 {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* ================= SIDEBAR GIỚI TRẺ ================= */
+        .featured-article img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .featured-article h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .list-article {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .list-article img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+        }
+
+        .list-article h3 {
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        /* Nút TOP */
+        .btn-top {
+            position: absolute;
+            right: -50px;
+            bottom: 50%;
+            border: 1px solid #ccc;
+background: #fff;
+            padding: 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  position: absolute;
+  bottom: 110%;
+  left: 0;
+
+  background: rgb(253, 252, 252);
+  color: rgb(8, 11, 196);
+  padding: 5px;
+  border-radius: 5px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 0.3s ease;
+}
+
+.tooltip:hover h3 {
+  color: #2b06d1;
+  text-decoration: underline;
+  text-underline-offset: 3px; /* gạch cách chữ ra chút */
+}
+.tooltip a {
+  text-decoration: none !important;
+color:rgb(32, 32, 32);
+}
+    </style>
+</head>
+<body>
+<div class="news-list">
+    <article>
+            <div class="tooltip">
+                    <a href="https://xaydungchinhsach.chinhphu.vn/sang-30-8-tong-duyet-dieu-binh-dieu-hanh-a80-119250828185032822.htm">
+                  <img src="https://xdcs.cdnchinhphu.vn/446259493575335936/2025/8/30/105-175652841358799464745-1756531547013-17565315470882066464458.jpg">
+                  <h3 >Tổng duyệt cấp Nhà nước Lễ diễu binh, diễu hành: Khẳng định sức mạnh toàn quân và tinh thần đại đoàn kết dân tộc</h3>
+                </a> 
+                <span class="tooltip-text">
+                Tổng duyệt cấp Nhà nước Lễ diễu binh, diễu hành: Khẳng định sức mạnh toàn quân và tinh thần đại đoàn kết dân tộc
+                </span>
+            </div>
+                </article>
+</div>
+
+    <main class="container main-layout">
+        
+        <section class="main-content">
+            <h2 class="section-title">Tin 24h</h2>
+            
+            <div class="news-grid">
+                <article>
+            <div class="tooltip">
+                    <a href="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/23/dai-hoc-da-nang-1776953833490461345153.jpg">
+                  <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/23/dai-hoc-da-nang-1776953833490461345153.jpg" alt="11 trường Việt">
+                  <h3 >11 trường Việt vào bảng xếp hạng ĐH tốt nhất châu Á, đa số tụt hạng</h3>
+                </a> 
+                <span class="tooltip-text">
+                 11 trường Việt vào bảng xếp hạng ĐH tốt nhất châu Á, đa số tụt hạng
+                </span>
+            </div>
+                </article>
+
+            <article>
+            <div class="tooltip">
+                    <a href="https://thanhnien.vn/thanh-hoa-set-cuc-lon-danh-xuong-dinh-nui-phia-tay-185260423092853333.htm">
+                  <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/23/base64-1776913412150526131017.jpeg">
+<h3 >Thanh Hóa: Sét cực lớn đánh xuống đỉnh núi phía tây</h3>
+                </a> 
+                <span class="tooltip-text">
+                 Thanh Hóa: Sét cực lớn đánh xuống đỉnh núi phía tây
+                </span>
+            </div>
+                </article>
+
+                 <article>
+            <div class="tooltip">
+                    <a href="https://thanhnien.vn/my-van-dung-cong-nghe-chong-uav-cua-ukraine-du-ong-trump-che-185260423175721511.htm">
+                  <img src="https://images2.thanhnien.vn/zoom/192_120/528068263637045248/2026/4/23/avatar1776955344683-17769553454291580923067.jpeg">
+                  <h3 >Mỹ vẫn dùng công nghệ chống UAV của Ukraine dù ông Trump 'chê'</h3>
+                </a> 
+                <span class="tooltip-text">
+                 Mỹ vẫn dùng công nghệ chống UAV của Ukraine dù ông Trump 'chê'
+                </span>
+            </div>
+                </article>
+
+                <article>
+            <div class="tooltip">
+                    <a href="https://thanhnien.vn/cuu-thu-khoa-truong-dh-ngoai-thuong-voi-lua-chon-lui-de-tien-185260422182832201.htm">
+                  <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/22/4-ngoc-nhon-chia-se-niem-tu-hao-va-hanh-phuc-khi-dien-trang-phuc-ao-dai-va-tu-gioi-thieu-truoc-ban-be-cac-nuocanh-nvcc-online-1776857060801611508471.jpg">
+                  <h3 >Cựu thủ khoa Trường ĐH Ngoại thương với lựa chọn 'lùi để tiến'</h3>
+                </a> 
+                <span class="tooltip-text">
+                 Cựu thủ khoa Trường ĐH Ngoại thương với lựa chọn 'lùi để tiến'
+                </span>
+            </div>
+                </article>
+
+                <article>
+            <div class="tooltip">
+                    <a href="https://thanhnien.vn/cong-an-tphcm-dam-bao-100-hoc-sinh-co-cccd-truoc-ky-thi-tot-nghiep-2026-185260423160329182.htm">
+                  <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/23/cong-an-tphcm-cap-cccd-hoc-sinh-ra-soat-sim-chinh-chu-17769349301801874522451.jpeg">
+                  <h3 >Công an TP.HCM đảm bảo 100% học sinh có CCCD trước kỳ thi tốt nghiệp 2026</h3>
+                </a> 
+                <span class="tooltip-text">
+                Công an TP.HCM đảm bảo 100% học sinh có CCCD trước kỳ thi tốt nghiệp 2026
+                </span>
+            </div>
+                </article>
+
+                <article>
+            <div class="tooltip">
+                    <a href="https://www.24h.com.vn/kinh-doanh/thi-truong-tien-so-hom-na…-du-bao-bitcoin-co-the-rot-xuong-30000-usd-c161a1741791.html">
+                  <img src="https://icdn.24h.com.vn/upload/1-2026/images/2026-02-28/255x170/1772281885-387-thumbnail-width740height495_anh_cat_3_2.jpg">
+<h3 >Thị trường tiền số hôm nay, 3-3: Chuyên gia dự báo Bitcoin có thể rớt xuống 30.000 USD</h3>
+                </a> 
+                <span class="tooltip-text">
+                 Thị trường tiền số hôm nay, 3-3: Chuyên gia dự báo Bitcoin có thể rớt xuống 30.000 USD
+                </span>
+            </div>
+                </article>
+
+                <article>
+            <div class="tooltip">
+                    <a href="https://vnexpress.net/ong-nguyen-duy-hung-noi-ly-do-ssi-chua-tham-gia-tai-san-so-5066340.html">
+                  <img src="https://i1-kinhdoanh.vnecdn.net/2026/04/23/SSI-3-JPG-1776938836-3756-1776939032.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=Nb7Z2hadVc1degppZYSRVQ">
+                  <h3 >Ông Nguyễn Duy Hưng nói lý do SSI chưa tham gia tài sản số</h3>
+                </a> 
+                <span class="tooltip-text">
+                 Ông Nguyễn Duy Hưng nói lý do SSI chưa tham gia tài sản số
+                </span>
+            </div>
+                </article>
+
+                <article>
+            <div class="tooltip">
+                    <a href="https://www.nxbtre.com.vn/sach/nhung-phong-su-ve-chien-tranh-viet-nam-13171.html">
+                  <img src="https://www.nxbtre.com.vn/Images/Book/NXBTreStoryFull_24382015_023833.jpg">
+                  <h3 >NHỮNG PHÓNG SỰ VỀ CHIẾN TRANH VIỆT NAM</h3>
+                </a> 
+                <span class="tooltip-text">
+                 NHỮNG PHÓNG SỰ VỀ CHIẾN TRANH VIỆT NAM
+                </span>
+            </div>
+                </article>
+                
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <h2 class="section-title">Giới trẻ</h2>
+            
+             <section class="news-list">
+                <article class="list-article">
+                    <div class="tooltip">
+                    <a href="https://vtv.vn/cau-chuyen-khong-an-thit-ga-va-noi-lo-ve-suat-an-hoc-duong-100260414091927562.htm">
+                  <img src="https://cdn-images.vtv.vn/thumb_w/1200/66349b6076cb4dee98746cf1/2026/04/14/package-media-89358684623031381287923-47721575336091762956340.png">
+                  <h3 >Câu chuyện 'không ăn thịt gà' và nỗi lo về suất ăn học đường</h3>
+                </a> 
+                <span class="tooltip-text">
+                 Câu chuyện 'không ăn thịt gà' và nỗi lo về suất ăn học đường
+                </span>
+            </div>
+                </article>
+
+            <section class="news-list">
+                <article class="list-article">
+                    <div class="tooltip">
+                    <a href="https://www.24h.com.vn/giai-tri/do-mixi-phan-ung-bat-ngo-khi-vtv24-vao-xem-livestream-c731a1440137.html">
+                  <img src="https://icdn.24h.com.vn/upload/1-2023/images/2023-02-13/domixi1a-1676252374-255-width740height403.jpg">
+<h3 >Độ Mixi phản ứng bất ngờ khi "VTV24" vào xem livestream</h3>
+                </a> 
+                <span class="tooltip-text">
+                 Độ Mixi phản ứng bất ngờ khi "VTV24" vào xem livestream
+                </span>
+            </div>
+                </article>
+
+                <article class="list-article">
+                   <div class="tooltip">
+                    <a href="https://tienphong.vn/lo-ca-doi-nay-khong-ruc-ro-thi-sao-post1832769.tpo">
+                  <img src="https://cdn.tienphong.vn/images/d68beb42bd946edae0dad3afec7eb30e4842970d1acf40ea36489d3d7190155073c47782950286750bd5445f33fb7529cc9f0510f7239cd4c049210240527d6127f45b0775037daf785bac90d477bf9d/z7687497933802-e44114d70c8a523249dc77f95248fd41.jpg.avif">
+                  <h3 >Lỡ cả đời này không rực rỡ thì sao?</h3>
+                </a> 
+                <span class="tooltip-text">
+                 Lỡ cả đời này không rực rỡ thì sao?
+                </span>
+            </div>
+                </article>
+
+            
+        </aside>
+
+    </main>
+
+</body>
+</html>
