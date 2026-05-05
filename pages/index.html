@@ -3,6 +3,7 @@
 <head>
     <title>Web Tin Tuc Don Gian</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <style>
         body { font-family: sans-serif; padding: 20px; }
         .bai-bao { border-bottom: 1px solid #ccc; margin-bottom: 10px; }
@@ -10,16 +11,29 @@
 
     </style>
 </head>
-<nav class="main-nav">
-  <ul>
-    <li><a href="./tintuc.html">Trang chủ</a></li>
-    <li><a href="#">Thể thao</a></li>
-    <li><a href="#">Kinh tế</a></li>
-    <li><a href="register.html">Đăng ký</a></li>
-    <<li><a href="articledetail.html">Phản hồi</a></li>
+<body>
+<nav class="navbar">
+        <div class="logo-container">
+            <a href="tintuc.html"><img src="images/logo.png" alt="logo" class="site-logo"> 
+            </a>
+        </div>
+
+        <button class="menu-toggle" id="btn-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-list">
+            <li><a href="./tintuc.html">Trang chủ</a></li>
+            <li><a href="#">Thể thao</a></li>
+            <li><a href="#">Kinh tế</a></li>
+            <li><a href="register.html">Đăng ký</a></li>
+           <li><a href="articledetail.html">Phản hồi</a></li>
             <li><a href="index.html">Đăng bài mới</a></li>
-  </ul>
-</nav>
+        </ul>
+    </nav>
+    <script src="../js/script.js"></script>
     <h3>Đăng bài mới</h3>
     <input id="tieuDe" placeholder="Tiêu đề">
     <textarea id="noiDung" placeholder="Nội dung"></textarea>
@@ -74,5 +88,6 @@
         // Chạy lần đầu khi mở trang
         hienThi();
     </script>
+    <div id="footer-placeholder"></div>
 </body>
 </html>
