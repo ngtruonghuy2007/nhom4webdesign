@@ -23,6 +23,12 @@
             margin-top: 30px;
         }
 
+        .news-grid article img {
+            transition: transform 0.3s ease;
+        }
+        .news-grid article:hover img {
+    transform: scale(1.05);
+        }
         .main-content {
             flex: 7; /* Cột trái chiếm khoảng 70% */
         }
@@ -108,11 +114,10 @@ background: #fff;
             cursor: pointer;
             text-align: center;
         }
-        .tooltip {
-  position: relative;
-  display: inline-block;
+.tooltip {
+ position: relative;
+display: inline-block;
 }
-
 .tooltip-text {
   position: absolute;
   bottom: 110%;
@@ -137,11 +142,91 @@ background: #fff;
 .tooltip a {
   text-decoration: none !important;
 color:rgb(32, 32, 32);
+}   
+/* Thiết lập chung */
+.site-footer {
+    border-top: 1px solid #ddd;
+    padding: 40px 0 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
 }
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Tầng 1: Chia 2 cụm lớn (Links và Contact) */
+.footer-row-top {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 50px; /* Khoảng cách giữa các cột link */
+}
+
+.nav-col a {
+    display: block;
+    text-decoration: none;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.nav-bold { font-weight: bold; color: #000 !important; }
+
+/* Phần contact bên phải */
+.footer-contact {
+    border-left: 1px solid #eee;
+    padding-left: 40px;
+}
+
+.contact-item { margin-bottom: 20px; }
+.label { font-weight: bold; margin-bottom: 10px; }
+
+.btn-app {
+    padding: 5px 12px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+/* Tầng 2: Dàn hàng ngang */
+.footer-row-middle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.footer-logo { font-size: 20px; font-weight: bold; }
+.footer-logo span { color: #9d0a0e; } /* Màu đỏ đặc trưng của báo chí */
+
+.footer-legal a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #777;
+}
+
+/* Tầng 3 */
+.footer-row-bottom {
+    padding-top: 20px;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+}      
     </style>
 </head>
 <body>
-<div class="news-list">
+    <div class="news-list">
     <article>
             <div class="tooltip">
                     <a href="https://xaydungchinhsach.chinhphu.vn/sang-30-8-tong-duyet-dieu-binh-dieu-hanh-a80-119250828185032822.htm">
@@ -307,4 +392,66 @@ color:rgb(32, 32, 32);
     </main>
 
 </body>
+<footer class="site-footer">
+    <div class="container">
+        <!-- Tầng 1: Liên kết chuyên mục & Liên hệ -->
+        <div class="footer-row-top">
+            <nav class="footer-nav">
+                <div class="nav-col">
+                    <a href="#" class="nav-bold">Trang chủ</a>
+                    <a href="#">Thời sự</a>
+                    <a href="#">Thế giới</a>
+                </div>
+                <div class="nav-col">
+                    <a href="#" class="nav-bold">Kinh doanh</a>
+                    <a href="#">Bất động sản</a>
+                    <a href="#">Chứng khoán</a>
+                </div>
+                <div class="nav-col">
+                    <a href="#" class="nav-bold">Giải trí</a>
+                    <a href="#">Thể thao</a>
+                    <a href="#">Pháp luật</a>
+                </div>
+                <div class="nav-col">
+                    <a href="#" class="nav-bold">Đời sống</a>
+                    <a href="#">Du lịch</a>
+                    <a href="#">Sức khỏe</a>
+                </div>
+            </nav>
+
+            <section class="footer-contact">
+                <div class="contact-item">
+                    <p class="label">Tải ứng dụng</p>
+                    <button class="btn-app">App Store</button>
+                    <button class="btn-app">Google Play</button>
+                </div>
+                <div class="contact-item">
+                    <p class="label">Hotline hỗ trợ</p>
+                    <p><strong>0123.456.789</strong> (Hà Nội)</p>
+                    <p><strong>0987.654.321</strong> (TP. HCM)</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Tầng 2: Logo và Pháp lý -->
+        <div class="footer-row-middle">
+            <div class="footer-logo">TIN TỨC <span>24H</span></div>
+            <div class="footer-legal">
+                <a href="#">Điều khoản</a>
+                <a href="#">Bảo mật</a>
+                <a href="#">Liên hệ quảng cáo</a>
+            </div>
+            <div class="footer-social">
+                <span>Theo dõi chúng tôi:</span>
+                <a href="#">FB</a> <a href="#">YT</a> <a href="#">TT</a>
+            </div>
+        </div>
+
+        <!-- Tầng 3: Bản quyền (Copyright) -->
+        <div class="footer-row-bottom">
+            <p>© 2026 Dự án nhóm Sinh viên VNU. Mọi quyền được bảo lưu.</p>
+            <p>Địa chỉ: Xuân Thủy, Cầu Giấy, Hà Nội.</p>
+        </div>
+    </div>
+</footer>
 </html>
