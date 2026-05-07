@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Chủ - Tin Tức</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <style>
         /* ================= BỐ CỤC CHUNG ================= */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
@@ -160,84 +161,39 @@ color:rgb(32, 32, 32);
     padding: 0 15px;
 }
 
-/* Tầng 1: Chia 2 cụm lớn (Links và Contact) */
-.footer-row-top {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 30px;
-    border-bottom: 1px solid #eee;
-}
-
-.footer-nav {
-    display: flex;
-    gap: 50px; /* Khoảng cách giữa các cột link */
-}
-
-.nav-col a {
-    display: block;
-    text-decoration: none;
-    color: #555;
-    margin-bottom: 8px;
-}
-
-.nav-bold { font-weight: bold; color: #000 !important; }
-
-/* Phần contact bên phải */
-.footer-contact {
-    border-left: 1px solid #eee;
-    padding-left: 40px;
-}
-
-.contact-item { margin-bottom: 20px; }
-.label { font-weight: bold; margin-bottom: 10px; }
-
-.btn-app {
-    padding: 5px 12px;
-    border: 1px solid #ccc;
-    background: #fff;
-    cursor: pointer;
-    margin-right: 5px;
-}
-
-/* Tầng 2: Dàn hàng ngang */
-.footer-row-middle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.footer-logo { font-size: 20px; font-weight: bold; }
-.footer-logo span { color: #9d0a0e; } /* Màu đỏ đặc trưng của báo chí */
-
-.footer-legal a {
-    margin-right: 15px;
-    text-decoration: none;
-    color: #777;
-}
-
-/* Tầng 3 */
-.footer-row-bottom {
-    padding-top: 20px;
-    text-align: center;
-    color: #999;
-    font-size: 12px;
-}      
     </style>
 </head>
 <body>
+<<<<<<< HEAD
 <nav class="main-nav">
         <ul>
+=======
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="tintuc.html"><img src="images/logo.png" alt="logo" class="site-logo"> 
+            </a>
+        </div>
+>>>>>>> f154c55ffe3a6e27f39c69a1ac60ad9c391e8c24
 
+        <button class="menu-toggle" id="btn-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-list">
             <li><a href="./tintuc.html">Trang chủ</a></li>
             <li><a href="thethao.html">Thể thao</a></li>
             <li><a href="#">Kinh tế</a></li>
             <li><a href="register.html">Đăng ký</a></li>
-            <li><a href="articledetail.html">Phản hồi</a></li>
+           <li><a href="articledetail.html">Phản hồi</a></li>
             <li><a href="index.html">Đăng bài mới</a></li>
         </ul>
     </nav>
+<<<<<<< HEAD
+=======
+    <script src="../js/script.js"></script>
+>>>>>>> f154c55ffe3a6e27f39c69a1ac60ad9c391e8c24
     <div class="news-list">
     <article>
             <div class="tooltip">
@@ -402,7 +358,6 @@ color:rgb(32, 32, 32);
         </aside>
 
     </main>
-
 </body>
 <footer class="site-footer">
     <div class="container">
@@ -447,7 +402,10 @@ color:rgb(32, 32, 32);
 
         <!-- Tầng 2: Logo và Pháp lý -->
         <div class="footer-row-middle">
-            <div class="footer-logo">TIN TỨC <span>24H</span></div>
+           <div class="logo-container">
+            <a href="tintuc.html"><img src="images/logo.png" alt="logo" class="site-logo"> 
+            </a>
+        </div>
             <div class="footer-legal">
                 <a href="#">Điều khoản</a>
                 <a href="#">Bảo mật</a>

@@ -51,3 +51,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('btn-toggle');
+    const menu = document.getElementById('nav-list');
+
+    if (btn && menu) {
+        btn.onclick = function() {
+            // Mở/Đóng menu bằng cách thêm class active
+            menu.classList.toggle('active');
+            // Tạo hình dấu X cho nút bấm
+            btn.classList.toggle('open');
+        };
+
+        // Đóng menu khi người dùng click ra ngoài vùng menu
+        document.onclick = function(e) {
+            if (!btn.contains(e.target) && !menu.contains(e.target)) {
+                menu.classList.remove('active');
+                btn.classList.remove('open');
+            }
+        };
+    }
+});
+/* phần footer ở cuối mỗi trang*/
+document.addEventListener("DOMContentLoaded", function () {
+    // Gọi file footer.html từ thư mục gốc
+    fetch('../footer.html') 
+        .then(response => {
+            if (!response.ok) throw new Error('Không tìm thấy file footer');
+            return response.text();
+        })
+        .then(data => {
+            // Chèn nội dung vào cái div có id là footer-placeholder
+            document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Lỗi:', error));
+});
