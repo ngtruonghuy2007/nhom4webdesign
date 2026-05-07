@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thể Thao - Tin Tức 24h</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <style>
         /* ================= BỐ CỤC CHUNG ================= */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
@@ -100,15 +102,24 @@
     </style>
 </head>
 <body>
+<nav class="navbar">
+        <div class="logo-container">
+            <a href="tintuc.html"><img src="images/logo.png" alt="logo" class="site-logo"> 
+            </a>
+        </div>
 
-    <!-- THANH ĐIỀU HƯỚNG -->
-    <nav class="main-nav">
-        <ul>
+        <button class="menu-toggle" id="btn-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-list">
             <li><a href="./tintuc.html">Trang chủ</a></li>
             <li><a href="thethao.html">Thể thao</a></li>
-            <li><a href="#">Kinh tế</a></li>
+            <li><a href="kinhte.html">Kinh tế</a></li>
             <li><a href="register.html">Đăng ký</a></li>
-            <li><a href="articledetail.html">Phản hồi</a></li>
+           <li><a href="articledetail.html">Phản hồi</a></li>
             <li><a href="index.html">Đăng bài mới</a></li>
         </ul>
     </nav>
@@ -310,6 +321,7 @@
             <!-- Bạn có thể copy phần sidebar "Giới trẻ" từ trang chủ sang đây nếu muốn -->
         </aside>
     </main>
-
+<script src="../js/script.js"></script>
+    <div id="footer-placeholder"></div>
 </body>
 </html>

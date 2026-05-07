@@ -6,6 +6,8 @@
     <title>THE VNU ECONOMIST | Premium Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <style>
         :root { --bg: #080808; --accent: #3b82f6; }
         body { font-family: 'Space Grotesk', sans-serif; background-color: var(--bg); color: #e5e7eb; cursor: crosshair; }
@@ -23,7 +25,27 @@
     </style>
 </head>
 <body class="grid-bg">
+<nav class="navbar">
+        <div class="logo-container">
+            <a href="tintuc.html"><img src="images/logo.png" alt="logo" class="site-logo"> 
+            </a>
+        </div>
 
+        <button class="menu-toggle" id="btn-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-list">
+            <li><a href="./tintuc.html">Trang chủ</a></li>
+            <li><a href="thethao.html">Thể thao</a></li>
+            <li><a href="kinhte.html">Kinh tế</a></li>
+            <li><a href="register.html">Đăng ký</a></li>
+           <li><a href="articledetail.html">Phản hồi</a></li>
+            <li><a href="index.html">Đăng bài mới</a></li>
+        </ul>
+    </nav>
     <!-- TOP INTELLIGENCE BAR -->
     <div class="border-b border-white/10 py-2 glass sticky top-0 z-50">
         <div class="animate-marquee whitespace-nowrap text-[10px] font-bold tracking-widest uppercase">
@@ -153,6 +175,7 @@
             </div>
         </div>
     </footer>
-
+<script src="../js/script.js"></script>
+    <div id="footer-placeholder"></div>
 </body>
 </html>
