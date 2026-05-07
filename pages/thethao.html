@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thể Thao - Tin Tức 24h</title>
+    <style>
+        /* ================= BỐ CỤC CHUNG ================= */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background-color: #fff; color: #292828; line-height: 1.4; }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Nav giữ nguyên của bạn */
+        .main-nav { background: #f8f8f8; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .main-nav ul { list-style: none; display: flex; justify-content: center; gap: 20px; }
+        .main-nav a { text-decoration: none; color: #333; font-weight: bold; }
+
+        /* ================= LAYOUT BÀI VIẾT NGANG NHƯ ẢNH ================= */
+        .category-layout {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .main-column {
+            flex: 7; /* Cột chính chứa danh sách bài viết */
+        }
+
+        .sidebar-column {
+            flex: 3; /* Giữ lại không gian cho sidebar nếu cần */
+        }
+
+        /* Container của từng bài viết */
+        .horizontal-post {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e5e5e5; /* Đường kẻ mờ ngăn cách */
+        }
+
+        .horizontal-post:last-child {
+            border-bottom: none;
+        }
+
+        /* Phần ảnh bên trái */
+        .post-thumbnail {
+            flex: 0 0 320px; /* Cố định chiều rộng ảnh */
+        }
+
+        .post-thumbnail img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover; /* Cắt cúp ảnh không bị méo */
+            border-radius: 6px; /* Bo góc nhẹ giống trong ảnh */
+        }
+
+        /* Phần nội dung bên phải */
+        .post-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .post-tag {
+            color: #c0392b; /* Màu đỏ đô */
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .post-title {
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1.3;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .post-title a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .post-title a:hover {
+            color: #1a56db;
+        }
+
+        .post-excerpt {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- THANH ĐIỀU HƯỚNG -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="./tintuc.html">Trang chủ</a></li>
+            <li><a href="thethao.html">Thể thao</a></li>
+            <li><a href="#">Kinh tế</a></li>
+            <li><a href="register.html">Đăng ký</a></li>
+            <li><a href="articledetail.html">Phản hồi</a></li>
+            <li><a href="index.html">Đăng bài mới</a></li>
+        </ul>
+    </nav>
+
+    <!-- NỘI DUNG CHÍNH -->
+    <main class="container category-layout">
+        <section class="main-column">
+            
+            <!-- BÀI VIẾT 1 -->
+            <article class="horizontal-post">
+                <div class="post-thumbnail">
+                    <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/23/base64-1776913412150526131017.jpeg" alt="Thể thao">
+                </div>
+                <div class="post-content">
+                    <span class="post-tag">BÓNG ĐÁ QUỐC TẾ</span>
+                    <h2 class="post-title">
+                        <a href="#">Manchester City đối mặt với án phạt nặng từ liên đoàn: Cổ đông lo lắng hoán đổi chiến lược</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        TPO - Để thực hiện dự án cải tổ lớn theo hình thức mới, liên đoàn bóng đá đã đề xuất các án phạt liên quan đến công bằng tài chính. Trong đó, các khoản đầu tư đối ứng tại khu vực phát triển hạ tầng đội bóng đang bị giám sát gắt gao.
+                    </p>
+                </div>
+            </article>
+
+            <!-- BÀI VIẾT 2 -->
+            <article class="horizontal-post">
+                <div class="post-thumbnail">
+                    <img src="https://images2.thanhnien.vn/zoom/192_120/528068263637045248/2026/4/23/avatar1776955344683-17769553454291580923067.jpeg" alt="Thể thao">
+                </div>
+                <div class="post-content">
+                    <span class="post-tag">TENNIS</span>
+                    <h2 class="post-title">
+                        <a href="#">Giải mã công nghệ phân tích 3D thành công trong việc khắc phục chấn thương thể thao khó</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        TPO - Với công nghệ nội soi 3D hiện đại giúp các bác sĩ thể thao quan sát chính xác cấu trúc giải phẫu và thao tác tinh vi hơn. Bệnh viện thể thao K đã thực hiện phẫu thuật thành công hai ca chấn thương dây chằng phức tạp. Mở ra cơ hội điều trị hiệu quả cao.
+                    </p>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- SIDEBAR RỖNG ĐỂ CHIA TỈ LỆ CHUẨN NHƯ TRANG CHỦ -->
+        <aside class="sidebar-column">
+            <!-- Bạn có thể copy phần sidebar "Giới trẻ" từ trang chủ sang đây nếu muốn -->
+        </aside>
+    </main>
+
+</body>
+</html>
