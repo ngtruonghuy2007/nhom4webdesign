@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Chủ - Tin Tức</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <style>
         /* ================= BỐ CỤC CHUNG ================= */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
@@ -112,21 +114,29 @@
     </style>
 </head>
 <body>
-
     <header class="container">
         <nav class="navbar">
-            <div class="logo-container">
-                <a href="tintuc.html"><img src="images/logo.png" alt="logo" class="site-logo"></a>
-            </div>
-            <ul class="nav-menu" id="nav-list">
-                <li><a href="./tintuc.html">Trang chủ</a></li>
-                <li><a href="thethao.html">Thể thao</a></li>
-                <li><a href="#">Kinh tế</a></li>
-                <li><a href="register.html">Đăng ký</a></li>
-                <li><a href="articledetail.html">Phản hồi</a></li>
-                <li><a href="index.html">Đăng bài mới</a></li>
-            </ul>
-        </nav>
+        <div class="logo-container">
+            <a href="tintuc.html"><img src="images/logo.png" alt="logo" class="site-logo"> 
+            </a>
+        </div>
+
+        <button class="menu-toggle" id="btn-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-list">
+            <li><a href="./tintuc.html">Trang chủ</a></li>
+            <li><a href="thethao.html">Thể thao</a></li>
+            <li><a href="kinhte.html">Kinh tế</a></li>
+            <li><a href="register.html">Đăng ký</a></li>
+           <li><a href="articledetail.html">Phản hồi</a></li>
+            <li><a href="index.html">Đăng bài mới</a></li>
+        </ul>
+    </nav>
+    <script src="../js/script.js"></script>
     </header>
 
     <main class="container main-layout">
@@ -324,7 +334,7 @@
                 <p>Địa chỉ: Xuân Thủy, Cầu Giấy, Hà Nội.</p>
             </div>
         </div>
-    </footer>
-
+    </footer> 
+        <div id="footer-placeholder"></div> 
 </body>
 </html>
