@@ -107,3 +107,27 @@ if (registerForm) {
         window.location.href = 'trangchu.html'; 
     });
 }
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("Đã kết nối script thành công!"); // Kiểm tra xem file JS có chạy không
+
+    const searchInput = document.getElementById('search-input');
+    // Quan trọng: Phải lấy các bài báo bên trong hàm này
+    const newsArticles = document.querySelectorAll('.news-list article');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            const keyword = e.target.value.toLowerCase().trim();
+
+            newsArticles.forEach(article => {
+                // Lấy tiêu đề từ thẻ h3 hoặc thẻ a bên trong article
+                const title = article.innerText.toLowerCase();
+                
+                if (title.includes(keyword)) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    }
+});
