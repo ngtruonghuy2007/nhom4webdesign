@@ -1,5 +1,4 @@
-// --- PHẦN 1: DÁN CHÌA KHÓA CỦA BẠN VÀO ĐÂY ---
-// Bạn hãy thay toàn bộ nội dung trong dấu { } bằng cái bảng mã bạn thấy trên Firebase
+// 1. Cấu hình Firebase (Giữ nguyên chìa khóa của bạn)
 const firebaseConfig = {
   apiKey: "AIzaSyArSZZ_HDDQGcgHHB0qH22N7ruXa8K8FEA",
   authDomain: "news-vnu.firebaseapp.com",
@@ -10,41 +9,49 @@ const firebaseConfig = {
   measurementId: "G-FGF2P4QED0"
 };
 
-// --- PHẦN 2: CÁC LỆNH KẾT NỐI (Giữ nguyên không sửa) ---
+// Khởi tạo Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// --- PHẦN 3: LỆNH XỬ LÝ NÚT BẤM (Giữ nguyên không sửa) ---
-window.onload = function() {
-    // Tìm cái nút bấm trong file HTML của bạn
-    const btn = document.querySelector('button'); 
+// 2. Hàm tổng hợp để không làm mất tính năng cũ
+window.addEventListener('load', function() {
+    
+    // --- PHẦN MENU (Khôi phục lại tính năng 3 gạch) ---
+    const menuIcon = document.querySelector('.menu-icon'); // Hoặc ID/Class của nút 3 gạch
+    const navMenu = document.querySelector('.nav-menu');   // Hoặc ID/Class của menu bạn muốn hiện
 
-    if (btn) {
-        btn.onclick = function(e) {
-            e.preventDefault(); // Chặn trang web tự tải lại
+    if (menuIcon && navMenu) {
+        menuIcon.onclick = function() {
+            navMenu.classList.toggle('active'); // Thêm hoặc xóa class để hiện menu
+        };
+    }
 
-            // Lấy dữ liệu từ các ô nhập
-            const title = document.querySelector('input').value;
-            const content = document.querySelector('textarea').value;
+    // --- PHẦN ĐĂNG BÀI (Firebase) ---
+    const btnDangBai = document.querySelector('button'); 
+    if (btnDangBai) {
+        btnDangBai.onclick = function(e) {
+            e.preventDefault();
 
-            if (title === "" || content === "") {
-                alert("Bạn quên chưa nhập nội dung kìa!");
+            const tieuDe = document.querySelector('input[placeholder="Tiêu đề"]').value;
+            const noiDung = document.querySelector('textarea[placeholder="Nội dung"]').value;
+
+            if (tieuDe === "" || noiDung === "") {
+                alert("Vui lòng nhập đủ Tiêu đề và Nội dung!");
                 return;
             }
 
-            // Gửi dữ liệu lên kho "posts"
             db.collection("posts").add({
-                tieuDe: title,
-                noiDung: content,
-                time: new Date().toLocaleString()
+                title: tieuDe,
+                content: noiDung,
+                createdAt: new Date().getTime()
             })
             .then(() => {
-                alert("Chúc mừng! Bài viết đã được lưu thành công.");
+                alert("Đăng bài thành công!");
                 location.reload(); 
             })
             .catch((error) => {
-                console.error("Lỗi: ", error);
+                alert("Lỗi Firebase: " + error);
             });
         };
     }
-};
+});
