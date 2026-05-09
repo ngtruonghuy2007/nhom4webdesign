@@ -187,6 +187,7 @@
     color: #999;
     font-size: 12px;
 }
+<<<<<<< HEAD
 /* =========================================
    BỔ SUNG HIỆU ỨNG VÀ LÀM ĐẸP GIAO DIỆN
 ========================================= */
@@ -278,4 +279,112 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+=======
+/* --- CHỈ ÁP DỤNG CHO TRANG CHI TIẾT BÓNG ĐÁ --- */
+
+/* Nền trắng và họa tiết cho riêng trang bóng đá */
+body.football-page {
+    background-color: #ffffff;
+    background-image: url('https://www.transparenttextures.com/patterns/white-diamond.png');
+    color: #333;
+}
+
+/* Container riêng cho trang bóng đá */
+.football-page .container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-top: 8px solid #da251d; /* Đỏ cờ Việt Nam */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+/* Trang trí ảnh cầu thủ Việt Nam */
+.football-page .post-detail > img {
+    width: 100%;
+    border-radius: 15px;
+    border: 4px solid #f1f1f1;
+    box-shadow: 0 5px 15px rgba(218, 37, 29, 0.2); /* Đổ bóng đỏ nhạt */
+}
+
+/* Tiêu đề đỏ rực rỡ */
+.football-page .post-detail h1 {
+    color: #da251d;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+/* Nút bấm vàng - đỏ đặc sắc */
+.football-page .btn-primary {
+    background: linear-gradient(to right, #da251d, #ffde00);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+}
+
+/* Avatar bình luận có viền vàng ngôi sao */
+.football-page .comment-item .avatar {
+    border: 3px solid #ffde00;
+}
+/* Thiết lập chung cho các sticker trang trí */
+.decoration {
+    position: absolute;
+    z-index: 1; /* Để nằm dưới chữ nếu cần, hoặc trên tùy bạn chỉnh */
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none; /* Để người dùng vẫn click được vào bài viết phía dưới */
+}
+
+/* Lá cờ Việt Nam bên trái */
+.flag-left {
+    width: 80px;
+    height: 50px;
+    top: 20px;
+    left: -100px; /* Đẩy ra ngoài lề trái của container */
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg');
+    transform: rotate(-15deg); /* Xoay nhẹ cho nghệ thuật */
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+}
+
+/* Lá cờ Việt Nam bên phải */
+.flag-right {
+    width: 80px;
+    height: 50px;
+    top: 150px;
+    right: -100px; /* Đẩy ra ngoài lề phải */
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg');
+    transform: rotate(15deg);
+    filter: drop-shadow(-2px 4px 6px rgba(0,0,0,0.2));
+}
+
+/* Quả bóng ở góc dưới bài viết */
+.ball-corner {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg');
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+    animation: spin 5s linear infinite; /* Làm quả bóng xoay cho vui mắt */
+}
+
+/* Hiệu ứng xoay quả bóng */
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Quan trọng: Đảm bảo container có position relative để các sticker bám vào đúng chỗ */
+.container {
+    position: relative;
+    /* Giữ nguyên các thuộc tính cũ của bạn */
+}
+
+/* Ẩn trang trí khi màn hình quá nhỏ để tránh bị đè chữ */
+@media (max-width: 1100px) {
+    .flag-left, .flag-right {
+        display: none;
+    }
+>>>>>>> 37cf412043dd65a708ec126de79ea3c008936c08
 }
