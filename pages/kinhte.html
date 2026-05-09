@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE VNU ECONOMIST | Premium Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        :root { --bg: #080808; --accent: #3b82f6; }
+        body { font-family: 'Space Grotesk', sans-serif; background-color: var(--bg); color: #e5e7eb; cursor: crosshair; }
+        .serif { font-family: 'Instrument Serif', serif; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .grid-bg { background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 0); background-size: 40px 40px; }
+        
+        /* Hiệu ứng gạch chân thông minh */
+        .hover-link { position: relative; text-decoration: none; }
+        .hover-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -2px; left: 0; background-color: var(--accent); transition: width 0.3s ease; }
+        .hover-link:hover::after { width: 100%; }
+
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { display: flex; animation: marquee 25s linear infinite; }
+    </style>
+</head>
+<body class="grid-bg">
+<nav class="navbar">
+        <div class="logo-container">
+            <a href="Trang chủ.html"><img src="images/logo.png" alt="logo" class="site-logo"> 
+            </a>
+        </div>
+
+        <button class="menu-toggle" id="btn-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-list">
+            <li><a href="./Trang chủ.html">Trang chủ</a></li>
+            <li><a href="thethao.html">Thể thao</a></li>
+            <li><a href="kinhte.html">Kinh tế</a></li>
+            <li><a href="register.html">Đăng ký</a></li>
+           <li><a href="articledetail.html">Phản hồi</a></li>
+            <li><a href="index.html">Đăng bài mới</a></li>
+        </ul>
+    </nav>
+    <!-- TOP INTELLIGENCE BAR -->
+    <div class="border-b border-white/10 py-2 glass sticky top-0 z-50">
+        <div class="animate-marquee whitespace-nowrap text-[10px] font-bold tracking-widest uppercase">
+            <div class="flex gap-12 px-6 items-center">
+                <span><span class="text-slate-500">RFR USD:</span> 5.32% <span class="text-green-500">▲</span></span>
+                <span><span class="text-slate-500">BRENT CRUDE:</span> $85.20 <span class="text-red-500">▼ (Hormuz Tension)</span></span>
+                <span><span class="text-slate-500">EURO DIGITAL:</span> DELAYED TO 2029 <span class="text-yellow-500">●</span></span>
+                <span><span class="text-slate-500">BTC/USD:</span> $64,215 <span class="text-green-500">▲</span></span>
+            </div>
+            <!-- Duplicate for infinite effect -->
+            <div class="flex gap-12 px-6 items-center">
+                <span><span class="text-slate-500">RFR USD:</span> 5.32% <span class="text-green-500">▲</span></span>
+                <span><span class="text-slate-500">BRENT CRUDE:</span> $85.20 <span class="text-red-500">▼</span></span>
+                <span><span class="text-slate-500">EURO DIGITAL:</span> DELAYED TO 2029</span>
+                <span><span class="text-slate-500">BTC/USD:</span> $64,215</span>
+            </div>
+        </div>
+    </div>
+
+    <header class="max-w-[1400px] mx-auto px-6 pt-12 pb-8 flex flex-col md:flex-row justify-between items-baseline gap-4">
+        <div class="flex flex-col">
+            <h1 class="text-6xl font-black tracking-tighter italic">VNU<span class="text-blue-500">.</span>EC</h1>
+            <p class="text-[10px] uppercase tracking-[0.5em] opacity-40">The Intelligence Agency of Economy</p>
+        </div>
+        <div class="text-right text-xs font-medium opacity-60">
+            <p>HANOI, VIETNAM / MAY 07, 2026</p>
+            <p>MARKET STATUS: <span class="text-green-500 italic">VOLATILE</span></p>
+        </div>
+    </header>
+
+    <main class="max-w-[1400px] mx-auto px-6 pb-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <!-- FEATURED REPORT: Năng lượng & Hormuz -->
+            <div class="lg:col-span-8 group">
+                <div class="border-t border-white/20 pt-4 mb-4 flex justify-between text-[10px] font-bold">
+                    <span>REPORT #2026-0507</span>
+                    <span class="text-blue-500 underline uppercase">Energy Crisis Analysis</span>
+                </div>
+                <div class="overflow-hidden mb-8">
+                    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=1400" 
+                         class="w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" alt="Hormuz Strait">
+                </div>
+                <h2 class="serif text-5xl md:text-7xl italic leading-[0.9] mb-8 group-hover:text-blue-400 transition">
+                    "Cơn địa chấn" tại eo biển Hormuz khiến ngành vận tải biển toàn cầu chao đảo.
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm leading-relaxed text-slate-400">
+                    <p>Theo báo cáo từ <span class="text-white italic">The Guardian</span> ngày 5/5, hàng trăm tàu vận tải đang khẩn trương rời khỏi khu vực Trung Đông khi căng thẳng leo thang. Chevron cảnh báo thị trường dầu thô có thể sớm rơi vào tình trạng thiếu hụt nghiêm trọng khi 20% lượng dầu thế giới bị chặn đứng.</p>
+                    <p>Ông Anoop Singh, Trưởng bộ phận nghiên cứu vận tải biển toàn cầu nhận định: <span class="text-white">"Dòng chảy thương mại qua tuyến hàng hải chiến lược này khó có thể sớm khôi phục, buộc các doanh nghiệp phải tìm kiếm lộ trình thay thế tốn kém hơn."</span></p>
+                </div>
+            </div>
+
+            <!-- SIDEBAR: Intelligence Dashboard -->
+            <div class="lg:col-span-4 space-y-12">
+                <div>
+                    <h3 class="text-[10px] font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-6">Global Briefing</h3>
+                    <ul class="space-y-8">
+                        <li class="group cursor-pointer">
+                            <span class="text-blue-500 text-[10px] font-mono">[ TECH ]</span>
+                            <h4 class="font-bold text-lg mt-1 hover-link">Apple tìm kiếm nhà cung cấp chip dự phòng ngoài TSMC, đàm phán với Intel và Samsung.</h4>
+                        </li>
+                        <li class="group cursor-pointer">
+                            <span class="text-blue-500 text-[10px] font-mono">[ CURRENCY ]</span>
+                            <h4 class="font-bold text-lg mt-1 hover-link">Châu Âu hụt hơi: Dự án Euro kỹ thuật số lỗi nhịp, sớm nhất phải đến 2029 mới ra mắt.</h4>
+                        </li>
+                        <li class="group cursor-pointer">
+                            <span class="text-blue-500 text-[10px] font-mono">[ GEOPOLITICS ]</span>
+                            <h4 class="font-bold text-lg mt-1 hover-link">Blackstone CEO: "Kinh tế toàn cầu vẫn đang chống chịu tốt trước các cú sốc địa chính trị."</h4>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- ANALYTICS WIDGET -->
+                <div class="glass p-8 rounded-sm">
+                    <div class="flex justify-between items-center mb-6">
+                        <h4 class="text-xs font-bold uppercase tracking-tighter italic text-blue-500">Market Pulse</h4>
+                        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between text-[11px]">
+                            <span class="opacity-50">China GDP Q1 2026</span>
+                            <span class="font-mono text-white">5.0%</span>
+                        </div>
+                        <div class="w-full bg-white/5 h-[2px]">
+                            <div class="bg-blue-600 h-full w-[50%]"></div>
+                        </div>
+                        <div class="flex justify-between text-[11px]">
+                            <span class="opacity-50">US Inflation Rate</span>
+                            <span class="font-mono text-white">3.2%</span>
+                        </div>
+                        <div class="w-full bg-white/5 h-[2px]">
+                            <div class="bg-red-500 h-full w-[32%]"></div>
+                        </div>
+                    </div>
+                    <p class="text-[9px] mt-6 opacity-40 leading-tight italic font-medium">Source: Bloomberg Intelligence, May 2026. *Masquerading data for display purposes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECONDARY GRID: Vietnam Focus -->
+        <div class="mt-24 pt-12 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="group">
+                <span class="serif text-4xl italic block mb-4 text-blue-500">01.</span>
+                <h4 class="font-bold text-xl mb-4 group-hover:underline">Chuyển đổi số Ngân hàng: Việt Nam đạt mốc 90% giao dịch phi tiền mặt.</h4>
+                <p class="text-xs text-slate-500 leading-relaxed italic">Dữ liệu từ Ngân hàng Nhà nước cho thấy sự bùng nổ của thanh toán QR và sinh trắc học trong nửa đầu năm 2026.</p>
+            </div>
+            <div class="group">
+                <span class="serif text-4xl italic block mb-4 text-blue-500">02.</span>
+                <h4 class="font-bold text-xl mb-4 group-hover:underline">Hạ tầng: Cao tốc Hòa Lạc - Hòa Bình tháo gỡ nút thắt giải phóng mặt bằng.</h4>
+                <p class="text-xs text-slate-500 leading-relaxed italic">Dự án trọng điểm kết nối vùng kinh tế phía Tây Thủ đô dự kiến hoàn thành đúng tiến độ cuối năm nay.</p>
+            </div>
+            <div class="group">
+                <span class="serif text-4xl italic block mb-4 text-blue-500">03.</span>
+                <h4 class="font-bold text-xl mb-4 group-hover:underline">Vốn vay: Hơn 951.000 lượt hộ nghèo tiếp cận vốn ưu đãi trong 4 tháng qua.</h4>
+                <p class="text-xs text-slate-500 leading-relaxed italic">Chính sách tài chính toàn diện đang giúp thu hẹp khoảng cách giàu nghèo tại các tỉnh miền núi.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-white/5 py-12 px-6">
+        <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center opacity-30 text-[10px] font-bold tracking-[0.3em] uppercase">
+            <p>© 2026 VNU INTERNATIONAL SCHOOL / DIGITAL BUSINESS LAB</p>
+            <div class="flex gap-8 mt-4 md:mt-0">
+                <a href="#">Terminals</a>
+                <a href="#">Privacy</a>
+                <a href="#">API Access</a>
+            </div>
+        </div>
+    </footer>
+<script src="../js/script.js"></script>
+    <div id="footer-placeholder"></div>
+</body>
+</html>
