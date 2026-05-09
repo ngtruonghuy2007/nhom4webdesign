@@ -187,3 +187,118 @@
     color: #999;
     font-size: 12px;
 }
+/* Thiết lập giao diện bóng đá */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #1a1a1a; /* Nền tối sang trọng */
+    color: #eeeeee;
+    line-height: 1.6;
+}
+
+/* Container chính */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #242424; /* Nền khối nội dung */
+    padding: 30px;
+    border-radius: 15px;
+    border-top: 5px solid #e74c3c; /* Viền đỏ đặc trưng bóng đá */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* --- TRANG TRÍ HÌNH ẢNH BÀI VIẾT --- */
+.post-detail > img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 20px 0;
+    filter: saturate(1.2) contrast(1.1); /* Làm màu sắc ảnh bóng đá rực rỡ hơn */
+    border: 2px solid #333;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Hiệu ứng zoom khi di chuột vào ảnh cầu thủ/sân vận động */
+.post-detail > img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(231, 76, 60, 0.3); /* Đổ bóng đỏ rực */
+}
+
+/* Tiêu đề bài viết */
+.post-detail header h1 {
+    font-size: 36px;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: -1px;
+}
+
+.post-meta {
+    color: #bdc3c7;
+    font-size: 14px;
+    border-left: 3px solid #e74c3c;
+    padding-left: 10px;
+    margin: 15px 0;
+}
+
+/* Nội dung bài viết */
+.post-content p {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+/* --- TRANG TRÍ PHẦN BÌNH LUẬN --- */
+.comments-section {
+    margin-top: 50px;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Avatar người hâm mộ */
+.comment-item .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #e74c3c; /* Viền đỏ nổi bật */
+    padding: 3px;
+    background: #fff;
+    object-fit: cover;
+}
+
+.comment-body {
+    background: #2c2c2c;
+    padding: 15px;
+    border-radius: 12px;
+    margin-left: 15px;
+    flex-grow: 1;
+}
+
+.comment-body h4 {
+    color: #e74c3c;
+    margin-bottom: 5px;
+}
+
+/* Nút bấm thể thao */
+.btn-primary {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
