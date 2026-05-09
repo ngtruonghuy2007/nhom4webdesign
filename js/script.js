@@ -95,3 +95,15 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error('Lỗi:', error));
 });
+const registerForm = document.querySelector('.registration-form');
+
+if (registerForm) {
+    registerForm.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        
+        alert('Đăng ký thành công!');
+        
+        // Cập nhật tên file mới tại đây
+        window.location.href = 'trangchu.html'; 
+    });
+}
