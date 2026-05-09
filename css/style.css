@@ -267,3 +267,20 @@ body.football-page::after {
     padding: 5px 15px;
 }
 /* ... Bạn có thể copy các phần search-box, news-card còn lại dán vào đây ... */
+/* Trang trí nền mờ Đảng và Nhà nước phía sau container */
+body.football-page {
+    /* Tạo lớp nền trắng mờ cho toàn bộ trang */
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url('https://upload.wikimedia.org/wikipedia/commons/b/b2/Hammer_and_sickle.svg') no-repeat fixed 10% 50%,
+                url('https://upload.wikimedia.org/wikipedia/commons/0/03/Emblem_of_Vietnam.svg') no-repeat fixed 90% 50%;
+    background-size: auto, 300px, 300px; /* Điều chỉnh kích thước ảnh bên trái và phải */
+    background-color: #f4f4f4;
+}
+
+/* Đảm bảo nội dung chính nổi bật trên nền mờ */
+.football-page .container {
+    background: #ffffff;
+    box-shadow: 0 0 50px rgba(0,0,0,0.1); /* Tạo độ nổi cho bài viết */
+    position: relative;
+    z-index: 1;
+}
