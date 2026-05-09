@@ -18,20 +18,20 @@
             </a>
         </div>
 
-        <button class="menu-toggle" id="btn-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+       <button class="menu-toggle" id="btn-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
 
-        <ul class="nav-menu" id="nav-list">
-            <li><a href="./Trang chủ.html">Trang chủ</a></li>
-            <li><a href="thethao.html">Thể thao</a></li>
-            <li><a href="kinhte.html">Kinh tế</a></li>
-            <li><a href="register.html">Đăng ký</a></li>
-           <li><a href="articledetail.html">Phản hồi</a></li>
-            <li><a href="index.html">Đăng bài mới</a></li>
-        </ul>
+<ul class="nav-menu" id="nav-list">
+    <li><a href="./Trang chủ.html">Trang chủ</a></li>
+    <li><a href="thethao.html">Thể thao</a></li>
+    <li><a href="kinhte.html">Kinh tế</a></li>
+    <li><a href="register.html">Đăng ký</a></li>
+    <li><a href="articledetail.html">Phản hồi</a></li>
+    <li><a href="index.html">Đăng bài mới</a></li>
+</ul>
     </nav>
     <h3>Đăng bài mới</h3>
     <input id="tieuDe" placeholder="Tiêu đề">
@@ -40,7 +40,7 @@
     <span>Số chữ đang viết: <strong id="wordCount">0</strong></span>
     <span id="timeStatus" style="display: none; color: #cc0000;">🕒 Đã lưu nháp: <span id="timeElapsed">0 phút trước</span></span>
 </div>
-    <button onclick="themBai()">Đăng bài</button>
+    <button id="btn-dang">Đăng bài</button>
 
     <h3>Danh sách bài báo</h3>
     <div id="ketQua"></div>
