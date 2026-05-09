@@ -1,5 +1,4 @@
-// --- PHẦN 1: DÁN CHÌA KHÓA CỦA BẠN VÀO ĐÂY ---
-// Bạn hãy thay toàn bộ nội dung trong dấu { } bằng cái bảng mã bạn thấy trên Firebase
+// 1. Cấu hình Firebase (Lấy từ bước đăng ký Web App của bạn)
 const firebaseConfig = {
   apiKey: "AIzaSyArSZZ_HDDQGcgHHB0qH22N7ruXa8K8FEA",
   authDomain: "news-vnu.firebaseapp.com",
@@ -10,40 +9,39 @@ const firebaseConfig = {
   measurementId: "G-FGF2P4QED0"
 };
 
-// --- PHẦN 2: CÁC LỆNH KẾT NỐI (Giữ nguyên không sửa) ---
+// 2. Khởi tạo
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// --- PHẦN 3: LỆNH XỬ LÝ NÚT BẤM (Giữ nguyên không sửa) ---
+// 3. Xử lý nút Đăng bài
 window.onload = function() {
-    // Tìm cái nút bấm trong file HTML của bạn
-    const btn = document.querySelector('button'); 
+    const btnDangBai = document.querySelector('button'); // Tìm nút "Đăng bài"
 
-    if (btn) {
-        btn.onclick = function(e) {
-            e.preventDefault(); // Chặn trang web tự tải lại
+    if (btnDangBai) {
+        btnDangBai.onclick = function(e) {
+            e.preventDefault();
 
-            // Lấy dữ liệu từ các ô nhập
-            const title = document.querySelector('input').value;
-            const content = document.querySelector('textarea').value;
+            // Lấy dữ liệu từ 2 ô nhập liệu của bạn
+            const tieuDe = document.querySelector('input[placeholder="Tiêu đề"]').value;
+            const noiDung = document.querySelector('textarea[placeholder="Nội dung"]').value;
 
-            if (title === "" || content === "") {
-                alert("Bạn quên chưa nhập nội dung kìa!");
+            if (tieuDe === "" || noiDung === "") {
+                alert("Vui lòng nhập đủ Tiêu đề và Nội dung!");
                 return;
             }
 
-            // Gửi dữ liệu lên kho "posts"
+            // Gửi lên Firebase
             db.collection("posts").add({
-                tieuDe: title,
-                noiDung: content,
-                time: new Date().toLocaleString()
+                title: tieuDe,
+                content: noiDung,
+                createdAt: new Date().getTime()
             })
             .then(() => {
-                alert("Chúc mừng! Bài viết đã được lưu thành công.");
+                alert("ĐĂNG THÀNH CÔNG! Dữ liệu đã lên Firebase.");
                 location.reload(); 
             })
             .catch((error) => {
-                console.error("Lỗi: ", error);
+                alert("Lỗi rồi: " + error);
             });
         };
     }
