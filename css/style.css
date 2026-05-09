@@ -187,3 +187,51 @@
     color: #999;
     font-size: 12px;
 }
+/* --- CHỈ ÁP DỤNG CHO TRANG CHI TIẾT BÓNG ĐÁ --- */
+
+/* Nền trắng và họa tiết cho riêng trang bóng đá */
+body.football-page {
+    background-color: #ffffff;
+    background-image: url('https://www.transparenttextures.com/patterns/white-diamond.png');
+    color: #333;
+}
+
+/* Container riêng cho trang bóng đá */
+.football-page .container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-top: 8px solid #da251d; /* Đỏ cờ Việt Nam */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+/* Trang trí ảnh cầu thủ Việt Nam */
+.football-page .post-detail > img {
+    width: 100%;
+    border-radius: 15px;
+    border: 4px solid #f1f1f1;
+    box-shadow: 0 5px 15px rgba(218, 37, 29, 0.2); /* Đổ bóng đỏ nhạt */
+}
+
+/* Tiêu đề đỏ rực rỡ */
+.football-page .post-detail h1 {
+    color: #da251d;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+/* Nút bấm vàng - đỏ đặc sắc */
+.football-page .btn-primary {
+    background: linear-gradient(to right, #da251d, #ffde00);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+}
+
+/* Avatar bình luận có viền vàng ngôi sao */
+.football-page .comment-item .avatar {
+    border: 3px solid #ffde00;
+}
