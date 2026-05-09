@@ -235,3 +235,62 @@ body.football-page {
 .football-page .comment-item .avatar {
     border: 3px solid #ffde00;
 }
+/* Thiết lập chung cho các sticker trang trí */
+.decoration {
+    position: absolute;
+    z-index: 1; /* Để nằm dưới chữ nếu cần, hoặc trên tùy bạn chỉnh */
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none; /* Để người dùng vẫn click được vào bài viết phía dưới */
+}
+
+/* Lá cờ Việt Nam bên trái */
+.flag-left {
+    width: 80px;
+    height: 50px;
+    top: 20px;
+    left: -100px; /* Đẩy ra ngoài lề trái của container */
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg');
+    transform: rotate(-15deg); /* Xoay nhẹ cho nghệ thuật */
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+}
+
+/* Lá cờ Việt Nam bên phải */
+.flag-right {
+    width: 80px;
+    height: 50px;
+    top: 150px;
+    right: -100px; /* Đẩy ra ngoài lề phải */
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg');
+    transform: rotate(15deg);
+    filter: drop-shadow(-2px 4px 6px rgba(0,0,0,0.2));
+}
+
+/* Quả bóng ở góc dưới bài viết */
+.ball-corner {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d3/Soccerball.svg');
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+    animation: spin 5s linear infinite; /* Làm quả bóng xoay cho vui mắt */
+}
+
+/* Hiệu ứng xoay quả bóng */
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Quan trọng: Đảm bảo container có position relative để các sticker bám vào đúng chỗ */
+.container {
+    position: relative;
+    /* Giữ nguyên các thuộc tính cũ của bạn */
+}
+
+/* Ẩn trang trí khi màn hình quá nhỏ để tránh bị đè chữ */
+@media (max-width: 1100px) {
+    .flag-left, .flag-right {
+        display: none;
+    }
+}
