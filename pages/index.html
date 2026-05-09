@@ -33,7 +33,6 @@
             <li><a href="index.html">Đăng bài mới</a></li>
         </ul>
     </nav>
-    <script src="../js/script.js"></script>
     <h3>Đăng bài mới</h3>
     <input id="tieuDe" placeholder="Tiêu đề">
     <textarea id="noiDung" placeholder="Nội dung"></textarea>
@@ -106,6 +105,12 @@ var dsBaiBao = JSON.parse(localStorage.getItem('danhSachBaiBao')) || [
         // Chạy lần đầu khi mở trang
         hienThi();
     </script>
+<script src="../js/script.js"></script>
     <div id="footer-placeholder"></div>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+
+    <script src="../js/data.js"></script>
+</body>
 </body>
 </html>
