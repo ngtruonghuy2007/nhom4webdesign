@@ -267,35 +267,41 @@ body.football-page::after {
     padding: 5px 15px;
 }
 /* ... Bạn có thể copy các phần search-box, news-card còn lại dán vào đây ... */
-/* Trang trí nền mờ Đảng và Nhà nước ở hai bên trống */
+
+/* --- TRANG TRÍ NỀN MỜ PHÍA SAU (CHỈ DÙNG CHO TRANG BÓNG ĐÁ) --- */
+
+/* Thiết lập chung cho 2 bên nền */
 body.football-page::before,
 body.football-page::after {
     content: "";
-    position: fixed; /* Giữ cố định khi cuộn trang */
+    position: fixed;   /* Giữ ảnh đứng yên khi cuộn trang */
     top: 50%;
     transform: translateY(-50%);
-    width: 350px; /* Độ rộng ảnh */
+    width: 350px;      /* Kích thước ảnh mờ */
     height: 350px;
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.06; /* Độ mờ rất nhẹ (6%) để không làm rối mắt */
-    z-index: -1; /* Đẩy ra sau cùng */
-    pointer-events: none; /* Không cản trở việc click chuột */
+    opacity: 0.06;     /* Độ mờ 6% (rất nhẹ để không làm rối mắt) */
+    z-index: -1;       /* Nằm dưới cùng */
+    pointer-events: none;
 }
 
-/* Hình ảnh bên trái: Huy hiệu Đảng */
+/* Ảnh bên trái: Huy hiệu Đảng (Búa Liềm) */
 body.football-page::before {
     left: 20px;
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b2/Hammer_and_sickle.svg');
 }
 
-/* Hình ảnh bên phải: Quốc huy Việt Nam */
+/* Ảnh bên phải: Quốc huy Việt Nam */
 body.football-page::after {
     right: 20px;
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/03/Emblem_of_Vietnam.svg');
 }
 
-/* Hiệu ứng mờ nhẹ cho cả nền để các biểu tượng hài hòa hơn */
-body.football-page {
-    background-image: radial-gradient(circle, #ffffff 0%, #f4f4f4 100%);
+/* Đảm bảo nội dung bài viết luôn nổi bật trên nền trắng tinh */
+.football-page .container {
+    background: #ffffff;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 50px rgba(0,0,0,0.1);
 }
