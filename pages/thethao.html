@@ -3,308 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tin tức tổng hợp-NEWS</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <title>VNU SPORTS | The Arena</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* ================= BỐ CỤC CHUNG ================= */
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
-        body { background-color: #fff; color: #292828; line-height: 1.4; }
+        :root { 
+            --bg: #0a0a0a; /* Nền tối mạnh mẽ hơn cho thể thao */
+            --accent: #ef4444; /* Đổi màu Đỏ đặc trưng cho Thể thao */
+        }
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            background-color: var(--bg); 
+            color: #e5e7eb; 
+            cursor: crosshair; 
+            overflow-x: hidden; /* Ngăn cuộn ngang khi mở menu */
+            margin: 0;
+        }
+        .serif { font-family: 'Instrument Serif', serif; }
+        .glass { background: rgba(233, 224, 224, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(91, 108, 195, 0.05); }
+        .grid-bg { background-image: radial-gradient(rgba(21, 104, 160, 0.08) 1px, transparent 0); background-size: 40px 40px; }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+        /* Hiệu ứng gạch chân thông minh */
+        .hover-link { position: relative; text-decoration: none; }
+        .hover-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -2px; left: 0; background-color: var(--accent); transition: width 0.3s ease; }
+        .hover-link:hover::after { width: 100%; }
 
-        /* Nav giữ nguyên của bạn */
-        .main-nav { background: #f8f8f8; padding: 10px 0; border-bottom: 1px solid #eee; }
-        .main-nav ul { list-style: none; display: flex; justify-content: center; gap: 20px; }
-        .main-nav a { text-decoration: none; color: #333; font-weight: bold; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { display: flex; animation: marquee 25s linear infinite; }
 
-        /* ================= LAYOUT BÀI VIẾT NGANG NHƯ ẢNH ================= */
-        .category-layout {
-            display: flex;
-            gap: 40px;
-            margin-top: 30px;
-        }
+        /* =========================================
+           CSS CHO BURGER MENU VÀ MENU TRƯỢT 
+           ========================================= */
+        .nav-icon { width: 30px; height: 20px; position: relative; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; z-index: 100; }
+        .nav-icon span { display: block; width: 100%; height: 2px; background-color: #fff; transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6); border-radius: 2px; }
+        
+        /* Hiệu ứng biến thành dấu X khi mở menu */
+        .nav-icon.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); background-color: var(--accent); }
+        .nav-icon.open span:nth-child(2) { opacity: 0; transform: translateX(-20px); }
+        .nav-icon.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: var(--accent); }
 
-        .main-column {
-            flex: 7; /* Cột chính chứa danh sách bài viết */
+        /* Khung menu trượt bên phải */
+        #side-menu {
+            position: fixed; top: 0; right: -100%; width: 300px; height: 100vh;
+            background: rgba(10, 10, 10, 0.98); backdrop-blur: 20px;
+            z-index: 90; transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            border-left: 1px solid rgba(239, 68, 68, 0.2); /* Viền mờ màu đỏ */
+            display: flex; flex-direction: column; justify-content: center; padding: 40px;
         }
-
-        .sidebar-column {
-            flex: 3; /* Giữ lại không gian cho sidebar nếu cần */
-        }
-
-        /* Container của từng bài viết */
-        .horizontal-post {
-            display: flex;
-            gap: 20px;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #e5e5e5; /* Đường kẻ mờ ngăn cách */
-        }
-
-        .horizontal-post:last-child {
-            border-bottom: none;
-        }
-
-        /* Phần ảnh bên trái */
-        .post-thumbnail {
-            flex: 0 0 320px; /* Cố định chiều rộng ảnh */
-        }
-
-        .post-thumbnail img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover; /* Cắt cúp ảnh không bị méo */
-            border-radius: 6px; /* Bo góc nhẹ giống trong ảnh */
-        }
-
-        /* Phần nội dung bên phải */
-        .post-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        .post-tag {
-            color: #c0392b; /* Màu đỏ đô */
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .post-title {
-            font-size: 22px;
-            font-weight: bold;
-            line-height: 1.3;
-            margin-bottom: 10px;
-            color: #222;
-        }
-
-        .post-title a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .post-title a:hover {
-            color: #1a56db;
-        }
-
-        .post-excerpt {
-            font-size: 15px;
-            color: #666;
-            line-height: 1.5;
-        }
+        #side-menu.active { right: 0; }
+        
+        /* Hiệu ứng link trong menu */
+        .menu-link { font-size: 20px; font-weight: 700; text-transform: uppercase; margin: 15px 0; transition: 0.3s; color: #888; text-decoration: none; }
+        .menu-link:hover { color: var(--accent); transform: translateX(10px); }
+        .menu-link.active { color: #fff; border-left: 3px solid var(--accent); padding-left: 10px; }
     </style>
 </head>
-<body>
-<nav class="navbar">
-        <div class="logo-container">
-            <a href="Trang chủ.html"><img src="images/logo.png" alt="logo" class="site-logo"> 
-            </a>
+<body class="grid-bg">
+
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 20px 30px; border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; background: rgba(10,10,10,0.8); z-index: 100; backdrop-filter: blur(10px);">
+        <div style="display: flex; align-items: center; gap: 15px; cursor: pointer;" onclick="window.location.href='./index.html'">
+            <img src="../images/logo.png" alt="VNU Sports Logo" style="height: 35px; object-fit: contain;">
+            <span style="color: var(--accent); font-weight: bold; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;">Sports</span>
         </div>
 
-        <button class="menu-toggle" id="btn-toggle">
+        <div class="nav-icon" id="menu-toggle">
             <span></span>
             <span></span>
             <span></span>
-        </button>
+        </div>
+    </header>
 
-        <ul class="nav-menu"  id="nav-list">
-            <li><a href="./Trang chủ.html">Trang chủ</a></li>
-            <li><a href="thethao.html">Thể thao</a></li>
-            <li><a href="kinhte.html">Kinh tế</a></li>
-            <li><a href="register.html">Đăng ký</a></li>
-           <li><a href="articledetail.html">Phản hồi</a></li>
-            <li><a href="index.html">Đăng bài mới</a></li>
-        </ul>
-    </nav>
+    <div id="side-menu">
+        <nav style="display: flex; flex-direction: column;">
+            <a href="./index.html" class="menu-link">Trang chủ</a>
+            <a href="./thethao.html" class="menu-link active">Thể thao</a>
+            <a href="../pages/kinhte.html" class="menu-link">Kinh tế</a>
+            <a href="../pages/register.html" class="menu-link">Đăng ký</a>
+            <a href="../pages/articledetail.html" class="menu-link">Phản hồi</a>
+            <a href="../pages/dangbaimoi.html" class="menu-link">Đăng bài mới</a>
+        </nav>
+    </div>
 
-    <!-- NỘI DUNG CHÍNH -->
-    <main class="container category-layout">
-        <section class="main-column">
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const sideMenu = document.getElementById('side-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+            sideMenu.classList.toggle('active');
+        });
+        
+        // Bấm ra ngoài khoảng trống thì tự động đóng menu
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !sideMenu.contains(e.target)) {
+                menuToggle.classList.remove('open');
+                sideMenu.classList.remove('active');
+            }
+        });
+    </script>
+   <main class="max-w-[1200px] mx-auto py-16 px-6 flex-grow">
+        
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24 items-center">
+            <div class="lg:col-span-7 overflow-hidden rounded-2xl glass p-2">
+                <img src="../images/TheThao1.png" alt="Thể thao" class="w-full h-[450px] object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-700">
+            </div>
+            <div class="lg:col-span-5">
+                <span class="text-red-500 font-bold text-[10px] tracking-widest uppercase mb-4 block">BÓNG ĐÁ QUỐC TẾ</span>
+                <h2 class="serif text-5xl italic leading-tight mb-6 hover-link">
+                    <a href="#" style="text-decoration: none; color: inherit;">Hai ngôi sao Real suýt đánh nhau trên sân tập</a>
+                </h2>
+                <p class="text-slate-400 leading-relaxed mb-8 text-sm">
+                    Chiều 6/5, Valverde và Tchouameni suýt lao vào đánh nhau sau màn tranh cãi gay gắt vì một va chạm trên sân tập. 
+                    "Một pha phạm lỗi châm ngòi cho màn đối đầu căng thẳng bậc nhất tại Valdebebas", nguồn tin từ nội bộ Real kể với Marca. Theo đó, Valverde và Tchouameni lao mặt vào nhau, xô đẩy và liên tục quát tháo, buộc các đồng đội phải can thiệp. Nhưng căng thẳng còn kéo dài do bộ đôi này vẫn to tiếng vặc nhau về tới tận phòng thay đồ.
+                </p>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- BÀI VIẾT 1 -->
-           <article class="horizontal-post">
-                <div class="post-thumbnail">
-                    <a href="https://thethao247.vn/175391-ket-qua-ty-so-ninh-binh-vs-hai-phong-niem-vui-chua-tron-ven-d419564.html">
-                         <img src="https://cdn-img.thethao247.vn/resize_389x234/storage/files/nhatbinh02112002/2026/05/09/692201918_122167105694947304_3422722017044086348_n-69ff2b1f127a9.jpg">
-                         </a>
+            <article class="glass p-5 rounded-xl group hover:border-red-500/50 transition-all flex flex-col">
+                <div class="overflow-hidden rounded-lg mb-4 h-48">
+                    <img src="../images/TheThao2.png" alt="Thể thao" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                 </div>
-                <div class="post-content">
-                    <span class="post-tag">FOOTBALL</span>
-                    <h2 class="post-title">
-                        <a href="https://thethao247.vn/175391-ket-qua-ty-so-ninh-binh-vs-hai-phong-niem-vui-chua-tron-ven-d419564.html"> Hoàng Đức lập công, Ninh Bình chiếm lấy top 3 của Hà Nội</a>
+                <div class="post-content flex flex-col flex-grow">
+                    <span class="text-red-500 text-[10px] font-bold tracking-widest mb-2 block">BÓNG ĐÁ TRONG NƯỚC</span>
+                    <h2 class="text-lg font-bold mb-3 leading-tight hover-link inline-block">
+                        <a href="https://vnexpress.net/viet-nam-dau-chu-nha-indonesia-o-giai-u19-dong-nam-a-2026-5071255.html" style="text-decoration: none; color: inherit;">Việt Nam đấu chủ nhà Indonesia ở giải U19 Đông Nam Á 2026</a>
                     </h2>
-                    <p class="post-excerpt">
-                      (Kết quả bóng đá) - CLB Ninh Bình giành chiến thắng 2-1 trước Hải Phòng trong trận đấu giàu cảm xúc, nơi Hoàng Đức tiếp tục để lại dấu ấn trước khi phải rời sân vì chấn thương.
+                    <p class="text-sm text-slate-400 line-clamp-3 mt-auto">
+                        Việt Nam nằm ở bảng A cùng đương kim vô địch Indonesia tại giải U19 Đông Nam Á 2026, diễn ra từ 1/6 đến 14/6. Lễ bốc thăm chia bảng được LĐBĐ Đông Nam Á (AFF) thực hiện vào chiều nay. Bên cạnh Indonesia, Việt Nam cùng bảng Timor Leste và Myanmar. Bảng B có Thái Lan, Malaysia, Singapore, Brunei. Bảng C gồm Australia, Campuchia, Philippines.
                     </p>
                 </div>
             </article>
-              <!-- BÀI VIẾT 2-->
-           <article class="horizontal-post">
-                <div class="post-thumbnail">
-                    <a href="https://thethao247.vn/190556-cdv-viet-nam-dong-loat-noi-gian-vi-afc-thien-vi-yemen-d419610.html">
-                         <img src="https://cdn-img.thethao247.vn/resize_382x240/storage/files/hoangnhien/2026/05/09/207-69ff0816a7149.jpg">
-                         </a>
-                </div>
-                <div class="post-content">
-                    <span class="post-tag">FOOTBALL</span>
-                    <h2 class="post-title">
-                        <a href="https://thethao247.vn/190556-cdv-viet-nam-dong-loat-noi-gian-vi-afc-thien-vi-yemen-d419610.html">CĐV Việt Nam đồng loạt nổi giận vì AFC 'thiên vị' Yemen</a>
-                    </h2>
-                    <p class="post-excerpt">
-                         Nhiều CĐV Việt Nam đồng loạt phản ứng sau khi AFC đăng video tổng hợp trận gặp Yemen với hàng loạt pha bóng nguy hiểm của U17 Việt Nam bị bỏ qua.                    </p>
-                </div>
-            </article>
-            <!-- BÀI VIẾT 3-->
-           <article class="horizontal-post">
-                <div class="post-thumbnail">
-                    <a href="https://thethao247.vn/190556-hlv-park-hang-seo-phan-khich-khi-doi-cua-cong-phuong-thua-tran-d419607.html">
-                         <img src="https://cdn-img.thethao247.vn/resize_248x178/storage/files/hoangnhien/2026/05/09/267-69fef7dd2070c.jpg">
-                         </a>
-                </div>
-                <div class="post-content">
-                    <span class="post-tag">FOOTBALL</span>
-                    <h2 class="post-title">
-                        <a href="https://thethao247.vn/190556-hlv-park-hang-seo-phan-khich-khi-doi-cua-cong-phuong-thua-tran-d419607.html">HLV Park Hang Seo phấn khích khi đội của Công Phượng thua trận</a>
-                    </h2>
-                    <p class="post-excerpt">
-                        Hình ảnh bùng nổ cảm xúc của cố vấn Park Hang Seo trên khán đài sau tiếng còi mãn cuộc gây chú ý lớn khi Bắc Ninh khiến Trường Tươi Đồng Nai thua trận đầu tiên mùa này.</p>
-                </div>
-            </article>
-             <!-- BÀI VIẾT 4-->
-           <article class="horizontal-post">
-                <div class="post-thumbnail">
-                    <a href="https://thethao247.vn/191838-dt-viet-nam-don-tin-hieu-dac-biet-tu-trung-ve-viet-kieu-phap-d419604.html">
-                         <img src="https://cdn-img.thethao247.vn/resize_248x178/storage/files/huyentram/2026/05/09/687706465_1046725464974827_6473321079325846322_n-69fee4cd035d1.jpg">
-                         </a>
-                </div>
-                <div class="post-content">
-                    <span class="post-tag">FOOTBALL</span>
-                    <h2 class="post-title">
-                        <a href="https://thethao247.vn/191838-dt-viet-nam-don-tin-hieu-dac-biet-tu-trung-ve-viet-kieu-phap-d419604.html">ĐT Việt Nam đón tín hiệu đặc biệt từ trung vệ Việt kiều Pháp</a>
-                    </h2>
-                    <p class="post-excerpt">
-                         Trung vệ Việt kiều Adou Minh nhiều khả năng sẽ có quốc tịch Việt Nam trong tháng 6/2026 và sẵn sàng cạnh tranh suất lên ĐT Việt Nam.</p>
-                </div>
-            </article>
-            <!-- BÀI VIẾT 5-->
-           <article class="horizontal-post">
-                <div class="post-thumbnail">
-                    <a href="https://thethao247.vn/463-link-xem-truc-tiep-tennis-novak-djokovic-vs-dino-prizmic-19h30-hom-nay-8-5-d419494.html">
-                         <img src="https://cdn-img.thethao247.vn/resize_248x178/storage/files/btvttth2/2026/05/08/nh-tt247-2-69fdaedee3fbe.jpg">
-                         </a>
-                </div>
-                <div class="post-content">
-                    <span class="post-tag">TENNIS</span>
-                    <h2 class="post-title">
-                        <a href="https://thethao247.vn/463-link-xem-truc-tiep-tennis-novak-djokovic-vs-dino-prizmic-19h30-hom-nay-8-5-d419494.html">Link xem trực tiếp tennis Novak Djokovic vs Dino Prizmic, 19h30 hôm nay 8/5</a>
-                    </h2>
-                    <p class="post-excerpt">
-                        (Link xem trực tiếp) - Novak Djokovic sẽ có trận ra quân Rome Masters 2026 trước đối thủ anh từng đánh bại cách đây hơn 2 năm - Dino Prizmic.</p>
-                </div>
-            </article>
-            <!-- BÀI VIẾT 6-->
-           <article class="horizontal-post">
-                <div class="post-thumbnail">
-                    <a href="https://thethao247.vn/400-lich-thi-dau-lck-2026-lmht-moi-nhat-d257918.html">
-                         <img src="https://cdn-img.thethao247.vn/resize_392x250/storage/files/haibui/2025/07/15/chrome_z1utwzkml0-6875bb33d0cad.png">
-                         </a>
-                </div>
-                <div class="post-content">
-                    <span class="post-tag">E-SPORTS</span>
-                    <h2 class="post-title">
-                        <a href="https://thethao247.vn/400-lich-thi-dau-lck-2026-lmht-moi-nhat-d257918.html">Lịch thi đấu LCK 2026 LMHT mới nhất</a>
-                    </h2>
-                    <p class="post-excerpt">
-                     Lịch thi đấu và kết quả LCK 2026 - giải vô địch LMHT Hàn Quốc, khởi tranh từ ngày 1/4.</p>
-                </div>
-            </article>
-             <!-- BÀI VIẾT 7-->
-           <article class="horizontal-post">
-                <div class="post-thumbnail">
-                    <a href="https://thethao247.vn/190556-truyen-thong-dong-nam-a-phat-cuong-khi-viet-nam-doat-ve-tu-ket-day-qua-cam-d419415.html">
-                         <img src="https://cdn-img.thethao247.vn/resize_392x250/storage/files/hoangnhien/2026/05/07/224-69fcb21310993.jpg">
-                         </a>
-                </div>
-                <div class="post-content">
-                    <span class="post-tag">FOOTBALL</span>
-                    <h2 class="post-title">
-                        <a href="https://thethao247.vn/190556-truyen-thong-dong-nam-a-phat-cuong-khi-viet-nam-doat-ve-tu-ket-day-qua-cam-d419415.html">Truyền thông Đông Nam Á phát cuồng khi Việt Nam đoạt vé tứ kết đầy quả cảm</a>
-                    </h2>
-                    <p class="post-excerpt">
-                        Chiến thắng nghẹt thở trước Myanmar không chỉ đưa U17 nữ Việt Nam vào tứ kết châu Á mà còn tạo nên cơn sốt lớn trên truyền thông khu vực Đông Nam Á.</p>
-                </div>
-            </article>
-            <!-- BÀI VIẾT 8-->
-           <article class="horizontal-post">
-                <div class="post-thumbnail">
-                    <a href="https://vietnamnet.vn/rashford-het-duong-quay-lai-mu-2513887.html">
-                         <img src="https://static-images.vnncdn.net/vps_images_publish/000001/000003/2026/5/8/rashford-het-duong-quay-lai-mu-1903.jpg?width=360&s=OOhaFC1ZHC1n3tx_sBMvAg">
-                         </a>
-                </div>
-                <div class="post-content">
-                    <span class="post-tag">FOOTBALL</span>
-                    <h2 class="post-title">
-                        <a href="https://vietnamnet.vn/rashford-het-duong-quay-lai-mu-2513887.html">Rashford hết đường quay lại MU</a>
-                    </h2>
-                    <p class="post-excerpt">
-                        Lãnh đạo Quỷ đỏ đã tước áo số 10 để trao cho Matheus Cunha, đóng chặt cánh cửa quay trở lại Old Trafford của Marcus Rashford.</p>
-                </div>
-            </article>
-            <!-- BÀI VIẾT 9-->
-           <article class="horizontal-post">
-                <div class="post-thumbnail">
-                    <a href="https://thanhnien.vn/vnggames-se-phat-hanh-sieu-pham-total-football-vng-tai-dong-nam-a-vao-ngay-224-185260415160249218.htm">
-                         <img src="https://images2.thanhnien.vn/zoom/328_205/528068263637045248/2026/4/15/1-1776243331584568936042-0-29-788-1290-crop-177624334332071116326.jpg">
-                         </a>
-                </div>
-                <div class="post-content">
-                    <span class="post-tag">E-SPORTS&FOOTBALL</span>
-                    <h2 class="post-title">
-                        <a href="https://thanhnien.vn/vnggames-se-phat-hanh-sieu-pham-total-football-vng-tai-dong-nam-a-vao-ngay-224-185260415160249218.htm">VNGGames sẽ phát hành siêu phẩm Total Football VNG tại Đông Nam Á vào ngày 22.4</a>
-                    </h2>
-                    <p class="post-excerpt">
-                        VNGGames và GALA Sports sẽ hợp tác phát hành trò chơi bóng đá di động Total Football VNG tại khu vực Đông Nam Á. Đặc biệt ở thị trường Việt Nam, cầu thủ Nguyễn Đình Bắc sẽ là Đại sứ thương hiệu trò chơi Total Football VNG.</p>
-                </div>
-            </article>
-             
-             <h2 class="section-title">Một số video</h2>
 
-            <article>
-                    <div class="tooltip">
-                        <a href="https://vietnamnet.vn/hlv-kim-sang-sik-va-xuan-son-noi-gi-sau-chien-thang-truoc-malaysia-2502273.html#undefined1">
-                            <img src="https://static-images.vnncdn.net/vps_images_publish/000001/000003/2026/4/1/hlv-kim-sang-sik-va-xuan-son-noi-gi-sau-chien-thang-truoc-malaysia-212.gif?width=760&s=-4Dv0JU0O5UHX1SMVfaulw">
-                            <h3>HLV Kim Sang Sik và Xuân Son nói gì sau chiến thắng trước Malaysia?</h3>
-                        </a>
-                        <span class="tooltip-text">Sau thắng lợi 3-1 trước Malaysia, HLV Kim Sang Sik cảm ơn người hâm mộ, toàn đội và ghi nhận các cá nhân nổi bật. Trong khi đó, Xuân Son không giấu được niềm vui khi cùng tuyển Việt Nam hoàn thành mục tiêu giành vé vào VCK Asian Cup 2027</span>
-                    </div>
-                </article>
-        
-        <article>
-                    <div class="tooltip">
-                        <a href="https://vietnamnet.vn/hlv-kim-sang-sik-noi-gi-ve-hoang-hen-va-can-nang-cua-xuan-son-2500830.html#undefined2">
-                            <img src="https://static-images.vnncdn.net/vps_images_publish/000001/000003/2026/3/27/hlv-kim-sang-sik-noi-gi-ve-hoang-hen-va-can-nang-cua-xuan-son-191.gif?width=260&s=MFAgI8jaHK4UU4Px_X-tOA">
-                            <h3>HLV Kim Sang-sik nói gì về Hoàng Hên và cân nặng của Xuân Son?</h3>
-                        </a>
-                        <span class="tooltip-text">Sau chiến thắng trước Bangladesh, HLV Kim Sang-sik gây chú ý với những nhận xét thẳng thắn về Hoàng Hên, đồng thời bất ngờ nhắc tới vấn đề cân nặng của Xuân Son trong quá trình thử nghiệm đội hình.</span>
-                    </div>
-                </article> 
+            <article class="glass p-5 rounded-xl group hover:border-red-500/50 transition-all flex flex-col">
+                <div class="overflow-hidden rounded-lg mb-4 h-48">
+                    <img src="../images/TheThao3.png" alt="Thể thao" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="post-content flex flex-col flex-grow">
+                    <span class="text-red-500 text-[10px] font-bold tracking-widest mb-2 block">BÓNG ĐÁ QUỐC TẾ</span>
+                    <h2 class="text-lg font-bold mb-3 leading-tight hover-link inline-block">
+                        <a href="https://vnexpress.net/messi-ghi-ban-kien-tao-tran-thu-hai-lien-tiep-5072025.html" style="text-decoration: none; color: inherit;">Messi ghi bàn kiến tạo trận thứ hai liên tiếp</a>
+                    </h2>
+                    <p class="text-sm text-slate-400 line-clamp-3 mt-auto">
+                        CanadaThủ quân Lionel Messi ghi dấu giày vào ba bàn, giúp Inter Miami thắng chủ nhà Toronto 4-2 ở vòng 12 MLS 2026. Ở trận trước, Messi ghi bàn và kiến tạo giúp đội nhà dẫn 3-0, nhưng vẫn thua ngược Orlando City 3-4. Lần này, siêu sao 38 tuổi thậm chí còn làm tốt hơn khi ghi một bàn và kiến tạo hai bàn khác, giúp Inter Miami dẫn Toronto 4-0. Chủ nhà chỉ gỡ lại được hai bàn, chấp nhận mất ba điểm cho đoàn quân Guillermo Hoyos.
+                    </p>
+                </div>
+            </article>
 
+            <article class="glass p-5 rounded-xl group hover:border-red-500/50 transition-all flex flex-col">
+                <div class="overflow-hidden rounded-lg mb-4 h-48">
+                    <img src="../images/TheThao4.png" alt="Thể thao" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="post-content flex flex-col flex-grow">
+                    <span class="text-red-500 text-[10px] font-bold tracking-widest mb-2 block">BÓNG ĐÁ TRONG NƯỚC</span>
+                    <h2 class="text-lg font-bold mb-3 leading-tight hover-link inline-block">
+                        <a href="https://vnexpress.net/viet-nam-co-them-cau-thu-nhap-tich-goc-brazil-5068405.html" style="text-decoration: none; color: inherit;">Việt Nam có thêm cầu thủ nhập tịch gốc Brazil</a>
+                    </h2>
+                    <p class="text-sm text-slate-400 line-clamp-3 mt-auto">
+                        Ninh Bình - Tiền đạo Geovane Magno của CLB Ninh Bình chính thức mang quốc tịch Việt Nam với cái tên Nguyễn Tài Lộc. Geovane sinh ngày 14/4/1994 ở Minas Gerais, Brazil. Anh trưởng thành ở các lò đào tạo trong nước, rồi thi đấu chuyên nghiệp tại các giải hạng thấp cho Primavera, Matonense, Sao Carlos và Maringa. Đến năm 2019, Geovane sang Việt Nam khoác áo Sài Gòn FC (nay đã giải thể).
+                    </p>
+                </div>
+            </article>
 
-            </section>
+            <article class="glass p-5 rounded-xl group hover:border-red-500/50 transition-all flex flex-col">
+                <div class="overflow-hidden rounded-lg mb-4 h-48">
+                    <img src="../images/TheThao5.png" alt="Thể thao" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="post-content flex flex-col flex-grow">
+                    <span class="text-red-500 text-[10px] font-bold tracking-widest mb-2 block">TENNIS</span>
+                    <h2 class="text-lg font-bold mb-3 leading-tight hover-link inline-block">
+                        <a href="https://vnexpress.net/djokovic-thua-nguoc-o-rome-masters-5071752.html" style="text-decoration: none; color: inherit;">Djokovic thua ngược ở Rome Masters</a>
+                    </h2>
+                    <p class="text-sm text-slate-400 line-clamp-3 mt-auto">
+                        Djokovic thua ngược đối thủ ở giải tennis Rome Masters 2026. Italy - Trong lần đầu thi đấu sau hai tháng, tay vợt huyền thoại Novak Djokovic thua Dino Prizmic 6-2, 2-6, 4-6 ở vòng hai Rome Masters.
+                    </p>
+                </div>
+            </article>
 
-        <!-- SIDEBAR RỖNG ĐỂ CHIA TỈ LỆ CHUẨN NHƯ TRANG CHỦ -->
-        <aside class="sidebar-column">
-            <!-- Bạn có thể copy phần sidebar "Giới trẻ" từ trang chủ sang đây nếu muốn -->
-        </aside>
+            <article class="glass p-5 rounded-xl group hover:border-red-500/50 transition-all flex flex-col">
+                <div class="overflow-hidden rounded-lg mb-4 h-48">
+                    <img src="../images/TheThao6.png" alt="Thể thao" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="post-content flex flex-col flex-grow">
+                    <span class="text-red-500 text-[10px] font-bold tracking-widest mb-2 block">ĐUA XE</span>
+                    <h2 class="text-lg font-bold mb-3 leading-tight hover-link inline-block">
+                        <a href="https://vnexpress.net/mercedes-lo-cho-antonelli-khi-italy-lo-hen-world-cup-2026-5069634.html" style="text-decoration: none; color: inherit;">Mercedes lo cho Antonelli khi Italy lỡ hẹn World Cup 2026</a>
+                    </h2>
+                    <p class="text-sm text-slate-400 line-clamp-3 mt-auto">
+                        Sau khi Italy không được dự World Cup 2026, kỳ vọng thể thao nước này dồn vào F1, nơi phong độ ấn tượng của tay đua trẻ Kimi Antonelli khiến đội đua Mercedes lo ngại. Antonelli mới 19 tuổi và là người trẻ nhất từng dẫn đầu bảng điểm F1. Hôm qua 3/5, tại Grand Prix Miami, anh giữ phong độ thăng hoa khi giành pole rồi thắng chặng thứ ba liên tiếp. Thành tích này khiến kỳ vọng từ quê nhà Italy tăng đột biến.
+                    </p>
+                </div>
+            </article>
+
+            <article class="glass p-5 rounded-xl group hover:border-red-500/50 transition-all flex flex-col">
+                <div class="overflow-hidden rounded-lg mb-4 h-48">
+                    <img src="../images/TheThao7.png" alt="Thể thao" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="post-content flex flex-col flex-grow">
+                    <span class="text-red-500 text-[10px] font-bold tracking-widest mb-2 block">VÕ THUẬT</span>
+                    <h2 class="text-lg font-bold mb-3 leading-tight hover-link inline-block">
+                        <a href="https://vnexpress.net/buoi-hop-bao-hon-loan-bac-nhat-lich-su-ufc-5071727.html" style="text-decoration: none; color: inherit;">Buổi họp báo hỗn loạn bậc nhất lịch sử UFC</a>
+                    </h2>
+                    <p class="text-sm text-slate-400 line-clamp-3 mt-auto">
+                        Mỹ - Trước thềm UFC 328, Khamzat Chimaev và Sean Strickland liên tục khẩu chiến gay gắt, đẩy căng thẳng lên đỉnh điểm trước khi xô xát nổ ra ngay trên sân khấu, buộc lực lượng an ninh và cảnh sát phải can thiệp. Ngay từ đầu, cả hai đã không được ngồi đúng vị trí quen thuộc trên bàn họp báo mà phải đứng đối diện dưới sự giám sát chặt chẽ của lực lượng an ninh và cảnh sát. Tuy nhiên, biện pháp này vẫn không thể ngăn màn khẩu chiến kéo dài và ngày càng gay gắt.
+                    </p>
+                </div>
+            </article>
+
+            <article class="glass p-5 rounded-xl group hover:border-red-500/50 transition-all flex flex-col">
+                <div class="overflow-hidden rounded-lg mb-4 h-48">
+                    <img src="../images/TheThao8.png" alt="Thể thao" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="post-content flex flex-col flex-grow">
+                    <span class="text-red-500 text-[10px] font-bold tracking-widest mb-2 block">CỜ VUA</span>
+                    <h2 class="text-lg font-bold mb-3 leading-tight hover-link inline-block">
+                        <a href="https://vnexpress.net/carlsen-thang-lien-ba-van-cuoi-vo-dich-tepe-sigeman-5071300.html" style="text-decoration: none; color: inherit;">Carlsen thắng liên ba ván cuối giành chức vô địch Tepa Sigeman 2026</a>
+                    </h2>
+                    <p class="text-sm text-slate-400 line-clamp-3 mt-auto">
+                        Thụy Điển - Kỳ thủ số một thế giới Magnus Carlsen lật ngược tình thế khi thắng ba ván cờ tiêu chuẩn cuối, trước khi hạ Arjun Erigaisi ở loạt tie-break TePe Sigeman 2026. Sau khởi đầu chệch choạc, Carlsen bứt lên mạnh mẽ ở giai đoạn cuối. Ở bốn vòng đầu, kỳ thủ Na Uy chỉ thắng một, hòa hai và thua một, trong đó có thất bại trước kỳ thủ Hà Lan Jorden van Foreest hôm 4/5. Khi đó, anh gần như bị gạch tên khỏi cuộc đua vô địch, do kém đỉnh bảng của thần đồng 14 tuổi Yagiz Kaan Erdogmus một điểm.
+                    </p>
+                </div>
+            </article>
+
+            <article class="glass p-5 rounded-xl group hover:border-red-500/50 transition-all flex flex-col">
+                <div class="overflow-hidden rounded-lg mb-4 h-48">
+                    <img src="../images/TheThao9.png" alt="Thể thao" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="post-content flex flex-col flex-grow">
+                    <span class="text-red-500 text-[10px] font-bold tracking-widest mb-2 block">ĐIỀN KINH</span>
+                    <h2 class="text-lg font-bold mb-3 leading-tight hover-link inline-block">
+                        <a href="https://vnexpress.net/nu-hoang-toc-do-my-kien-puma-mercedes-f1-5068485.html" style="text-decoration: none; color: inherit;">Nữ hoàng tốc độ Mỹ kiện Puma, Mercedes F1</a>
+                    </h2>
+                    <p class="text-sm text-slate-400 line-clamp-3 mt-auto">
+                        Mỹ - Abby Steiner, nhà vô địch điền kinh thế giới người Mỹ, cáo buộc các mẫu giày của Puma với công nghệ sợi carbon và nitrofoam gây chấn thương nghiêm trọng, buộc cô phải sớm dừng sự nghiệp thi đấu đỉnh cao. Steiner đệ đơn kiện Puma và đội đua Mercedes-AMG Petronas Formula One Team tại tòa án bang Massachusetts, cáo buộc các sản phẩm giày của hãng có thiết kế lỗi, gây ra hàng loạt chấn thương ảnh hưởng nghiêm trọng tới sự nghiệp.
+                    </p>
+                </div>
+            </article>
+        </div>
     </main>
-<script src="../js/script.js"></script>
-    <div id="footer-placeholder"></div>
+   <footer class="border-t border-white/10 pt-16 pb-8 px-6 mt-20 glass">
+        <div class="max-w-[1200px] mx-auto">
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/5">
+                <nav class="md:col-span-8 grid grid-cols-3 gap-8">
+                    <div class="flex flex-col gap-3">
+                        <a href="index.html" class="font-bold text-white hover:text-red-500 transition-colors uppercase tracking-widest text-[11px]">Trang chủ</a>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <a href="../pages/kinhte.html" class="font-bold text-white hover:text-red-500 transition-colors uppercase tracking-widest text-[11px]">Kinh tế</a>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <a href="../pages/thethao.html" class="font-bold text-white hover:text-red-500 transition-colors uppercase tracking-widest text-[11px]">Thể thao</a>
+                    </div>
+                </nav>
+
+                <section class="md:col-span-4 border-l-0 md:border-l border-white/5 pl-0 md:pl-12 flex flex-col gap-8">
+                    <div>
+                        <p class="text-[10px] font-bold tracking-widest uppercase mb-4 opacity-40">Tải ứng dụng</p>
+                        <div class="flex gap-3">
+                            <button class="px-4 py-2 border border-white/10 rounded text-[10px] font-bold uppercase hover:bg-red-500 hover:text-white transition-all">App Store</button>
+                            <button class="px-4 py-2 border border-white/10 rounded text-[10px] font-bold uppercase hover:bg-red-500 hover:text-white transition-all">Google Play</button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-bold tracking-widest uppercase mb-4 opacity-40">Hotline hỗ trợ</p>
+                        <p class="text-sm font-bold">0123.456.789 <span class="text-[10px] font-normal opacity-40 ml-2">(Hà Nội)</span></p>
+                        <p class="text-sm font-bold">0987.654.321 <span class="text-[10px] font-normal opacity-40 ml-2">(TP. HCM)</span></p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center py-8 gap-6">
+                <div class="logo-container">
+                    <img src="../images/logo.png" alt="logo" class="h-8 grayscale opacity-70 hover:grayscale-0 transition-all cursor-pointer">
+                </div>
+                <div class="flex gap-8 text-[10px] font-bold tracking-widest uppercase">
+                    <a href="#" class="hover:text-red-500 transition-colors">Điều khoản</a>
+                    <a href="#" class="hover:text-red-500 transition-colors">Bảo mật</a>
+                    <a href="#" class="hover:text-red-500 transition-colors">Liên hệ quảng cáo</a>
+                </div>
+                <div class="text-[10px] opacity-40 uppercase tracking-[0.2em]">
+                    Theo dõi: FB | YT | TT
+                </div>
+            </div>
+
+            <div class="text-center md:text-left pt-8 border-t border-white/5 opacity-30 text-[10px] font-bold tracking-[0.2em] uppercase flex flex-col md:flex-row justify-between">
+                <p>© 2026 Dự án nhóm Sinh viên VNU. Mọi quyền được bảo lưu.</p>
+                <p class="mt-2 md:mt-0">Địa chỉ: Xuân Thủy, Cầu Giấy, Hà Nội.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
