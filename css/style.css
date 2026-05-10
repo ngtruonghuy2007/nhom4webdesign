@@ -267,3 +267,27 @@ body.football-page::after {
     padding: 5px 15px;
 }
 /* ... Bạn có thể copy các phần search-box, news-card còn lại dán vào đây ... */
+/* 1. Ép các bài báo nằm thành hàng ngang (để chúng nhỏ lại) */
+#newsContainer, .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Chia cột tự động */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* 2. Ép tất cả ảnh có kích thước bằng thừa tự động cắt */
+.news-item img {
+    width: 100%;           /* Rộng hết khung bài báo */
+    height: 180px;         /* Ép chiều cao cố định là 180px cho mọi ảnh */
+    object-fit: cover;     /* Cực kỳ quan trọng: Ảnh tự cắt để không bị méo */
+    display: block;
+    border-radius: 5px;    /* Bo góc cho đẹp */
+}
+
+/* 3. Chỉnh cho tiêu đề nhỏ gọn lại */
+.news-item h3 {
+    font-size: 16px;
+    margin-top: 10px;
+    line-height: 1.4;
+    color: #333;
+}
