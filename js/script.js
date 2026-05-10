@@ -1,56 +1,66 @@
-/* ==========================================================================
-   TÍNH NĂNG MÔ PHỎNG BÌNH LUẬN (HỆ NĂM NHẤT)
-   ========================================================================== */
+// 1. Danh sách dữ liệu bài báo
+const articles = [
+    "Bóng đá Việt Nam hôm nay có gì mới?",
+    "Lịch thi đấu bóng đá Ngoại hạng Anh cuối tuần",
+    "Tin tức thời sự 24h",
+    "Kết quả trận bóng đá tối qua",
+    "Bóng đá nữ Việt Nam vươn tầm thế giới"
+];
 
-// Chờ HTML load xong xuôi mới chạy JS để tránh lỗi null
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // Lấy các thẻ HTML từ trang article-detail.html
-    const commentForm = document.querySelector('.comment-form');
-    const commentList = document.querySelector('.comments-list');
-    const commentInput = document.querySelector('#comment-text');
+// 2. Lấy các thành phần từ HTML
+const searchInput = document.getElementById('search-bar');
+const resultBox = document.getElementById('result-box');
 
-    // Chỉ chạy logic nếu trang hiện tại có chứa form bình luận
-    if (commentForm && commentList && commentInput) {
+// 3. Hàm xử lý khi gõ phím
+if (searchInput && resultBox) {
+    searchInput.addEventListener('input', function() {
+        const keyword = this.value.trim().toLowerCase();
         
-        commentForm.addEventListener('submit', function(event) {
-            // 1. Ngăn chặn hành vi F5 (reload) mặc định của trình duyệt khi bấm submit
-            event.preventDefault(); 
+        // Xóa kết quả cũ
+        resultBox.innerHTML = '';
 
-            // 2. Lấy nội dung người dùng vừa gõ và xóa khoảng trắng thừa
-            const userText = commentInput.value.trim();
+        if (keyword === '') {
+            resultBox.style.display = 'none';
+            return;
+        }
 
-            // 3. Nếu nội dung không bị rỗng thì tiến hành tạo bình luận
-            if (userText !== '') {
+        // Lọc bài báo chứa từ khóa
+        const filtered = articles.filter(item => 
+            item.toLowerCase().includes(keyword)
+        );
+
+        if (filtered.length > 0) {
+            // Có kết quả -> Hiện danh sách
+            filtered.forEach(title => {
+                const li = document.createElement('li');
+                li.className = 'result-item';
+                li.textContent = title;
                 
-                // Tạo một thẻ div mới chứa class 'comment-item'
-                const newComment = document.createElement('div');
-                newComment.classList.add('comment-item');
+                // Khi bấm vào một bài báo thì điền tên nó lên thanh search
+                li.onclick = () => {
+                    searchInput.value = title;
+                    resultBox.style.display = 'none';
+                };
                 
-                // Lấy thêm ngày giờ hiện tại cho giao diện thêm "trưởng thành"
-                const now = new Date();
-                const timeString = now.toLocaleDateString('vi-VN') + ' ' + now.toLocaleTimeString('vi-VN');
+                resultBox.appendChild(li);
+            });
+            resultBox.style.display = 'block';
+        } else {
+            // Không tìm thấy gì
+            resultBox.innerHTML = '<li class="no-result">Không tìm thấy bài báo tương ứng</li>';
+            resultBox.style.display = 'block';
+        }
+    });
+}
 
-                // Chèn cấu trúc HTML con vào bên trong thẻ div vừa tạo
-                // (Lưu ý: nhớ đổi tên file ảnh avatar mặc định cho khớp với thư mục của bạn)
-                newComment.innerHTML = `
-                    <img src="../images/avatar-default.jpg" alt="Ảnh đại diện người dùng ẩn danh" class="avatar">
-                    <div class="comment-body">
-                        <h4>Sinh viên VNU-IS</h4>
-                        <p style="font-size: 0.8em; color: #888; margin-bottom: 5px;">${timeString}</p>
-                        <p>${userText}</p>
-                    </div>
-                `;
-
-                // 4. Đưa bình luận mới lên ĐẦU danh sách (dùng prepend thay vì append để user thấy ngay)
-                commentList.prepend(newComment);
-
-                // 5. Xóa trắng ô nhập liệu để user gõ bình luận tiếp theo
-                commentInput.value = '';
-            }
-        });
+// 4. Đóng danh sách khi nhấn chuột ra ngoài
+document.addEventListener('click', (e) => {
+    const searchContainer = document.querySelector('.search-container');
+    if (searchContainer && !searchContainer.contains(e.target)) {
+        resultBox.style.display = 'none';
     }
 });
+// đóng mở menu 
 document.addEventListener('DOMContentLoaded', function() {
     const btn = document.getElementById('btn-toggle');
     const menu = document.getElementById('nav-list');
@@ -72,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 });
-/* phần footer ở cuối mỗi trang*/
 document.addEventListener("DOMContentLoaded", function () {
     // Gọi file footer.html từ thư mục gốc
     fetch('../footer.html') 
@@ -85,4 +94,40 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('footer-placeholder').innerHTML = data;
         })
         .catch(error => console.error('Lỗi:', error));
+});
+const registerForm = document.querySelector('.registration-form');
+
+if (registerForm) {
+    registerForm.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        
+        alert('Đăng ký thành công!');
+        
+        // Cập nhật tên file mới tại đây
+        window.location.href = 'trangchu.html'; 
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("Đã kết nối script thành công!"); // Kiểm tra xem file JS có chạy không
+
+    const searchInput = document.getElementById('search-input');
+    // Quan trọng: Phải lấy các bài báo bên trong hàm này
+    const newsArticles = document.querySelectorAll('.news-list article');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            const keyword = e.target.value.toLowerCase().trim();
+
+            newsArticles.forEach(article => {
+                // Lấy tiêu đề từ thẻ h3 hoặc thẻ a bên trong article
+                const title = article.innerText.toLowerCase();
+                
+                if (title.includes(keyword)) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    }
 });

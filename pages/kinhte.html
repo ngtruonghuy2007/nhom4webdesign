@@ -6,6 +6,8 @@
     <title>THE VNU ECONOMIST | Premium Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <style>
         :root { 
             --bg: #080808; 
@@ -43,12 +45,53 @@
         .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     </style>
 </head>
+<<<<<<< HEAD
 <body class="grid-bg flex flex-col min-h-screen">
 
     <header class="border-b border-white/10 py-6 px-8 flex justify-between items-center sticky top-0 bg-[#080808]/90 backdrop-blur-md z-[100]">
         <div class="flex items-center gap-4 cursor-pointer" onclick="window.location.href='../index.html'">
             <img src="../images/logo.png" alt="VNU Logo" class="h-8 object-contain">
             <span class="text-xs font-bold tracking-[0.4em] uppercase opacity-50 text-blue-400">Economy</span>
+=======
+<body class="grid-bg">
+<nav class="navbar">
+        <div class="logo-container">
+            <a href="Trang chủ.html"><img src="images/logo.png" alt="logo" class="site-logo"> 
+            </a>
+        </div>
+
+        <button class="menu-toggle" id="btn-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-list">
+            <li><a href="./Trang chủ.html">Trang chủ</a></li>
+            <li><a href="thethao.html">Thể thao</a></li>
+            <li><a href="kinhte.html">Kinh tế</a></li>
+            <li><a href="register.html">Đăng ký</a></li>
+           <li><a href="articledetail.html">Phản hồi</a></li>
+            <li><a href="index.html">Đăng bài mới</a></li>
+        </ul>
+    </nav>
+    <!-- TOP INTELLIGENCE BAR -->
+    <div class="border-b border-white/10 py-2 glass sticky top-0 z-50">
+        <div class="animate-marquee whitespace-nowrap text-[10px] font-bold tracking-widest uppercase">
+            <div class="flex gap-12 px-6 items-center">
+                <span><span class="text-slate-500">RFR USD:</span> 5.32% <span class="text-green-500">▲</span></span>
+                <span><span class="text-slate-500">BRENT CRUDE:</span> $85.20 <span class="text-red-500">▼ (Hormuz Tension)</span></span>
+                <span><span class="text-slate-500">EURO DIGITAL:</span> DELAYED TO 2029 <span class="text-yellow-500">●</span></span>
+                <span><span class="text-slate-500">BTC/USD:</span> $64,215 <span class="text-green-500">▲</span></span>
+            </div>
+            <!-- Duplicate for infinite effect -->
+            <div class="flex gap-12 px-6 items-center">
+                <span><span class="text-slate-500">RFR USD:</span> 5.32% <span class="text-green-500">▲</span></span>
+                <span><span class="text-slate-500">BRENT CRUDE:</span> $85.20 <span class="text-red-500">▼</span></span>
+                <span><span class="text-slate-500">EURO DIGITAL:</span> DELAYED TO 2029</span>
+                <span><span class="text-slate-500">BTC/USD:</span> $64,215</span>
+            </div>
+>>>>>>> 2b41b603985abaf7a6ef89856cb46c8515b8deff
         </div>
         
         <div class="nav-icon" id="menu-toggle">
@@ -198,6 +241,7 @@
             </div>
         </div>
     </footer>
+<<<<<<< HEAD
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');
@@ -213,5 +257,9 @@
             }
         });
     </script>
+=======
+<script src="../js/script.js"></script>
+    <div id="footer-placeholder"></div>
+>>>>>>> 2b41b603985abaf7a6ef89856cb46c8515b8deff
 </body>
 </html>

@@ -115,3 +115,23 @@ body {
     background-color: transparent !important; 
     object-fit: contain;
 }
+/* Trạng thái menu khi đóng */
+.nav-menu {
+    display: flex !important; /* Luôn để flex nhưng ẩn bằng chiều cao */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Đẩy xuống ngay dưới navbar */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    max-height: 0; /* Thu nhỏ chiều cao về 0 */
+    overflow: hidden; /* Cắt bỏ phần nội dung thừa */
+    transition: max-height 0.5s ease; /* Hiệu ứng mượt */
+    z-index: 999;
+}
+
+/* Khi ấn vào nút (có class active) */
+.nav-menu.active {
+    max-height: 500px !important; /* Cho phép mở rộng chiều cao */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
