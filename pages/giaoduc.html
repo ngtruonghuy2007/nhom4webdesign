@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giáo Dục - Tin Tức Tổng Hợp NEWS</title>
-    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -275,41 +276,32 @@
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="container header-wrapper">
-            <button id="openMenuBtn" class="hamburger-btn">
-                <span></span><span></span><span></span>
-            </button>
-            <div class="logo-container">
-                <a href="#"><h2>GIÁO DỤC <span>NEWS</span></h2></a>
-            </div>
-            <div class="header-actions">
-                <a href="#"><i class="fas fa-search"></i> Tìm kiếm</a>
-            </div>
+    <header class="container">
+        <nav class="navbar">
+        <div class="logo-container">
+            <a href="index.html"><img src="../images/logo.png" alt="logo" class="site-logo"> 
+            </a>
         </div>
+
+        <button class="menu-toggle" id="btn-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-list">
+            <li><a href="./index.html">Trang chủ</a></li>
+            <li><a href="thethao.html">Thể thao</a></li>
+            <li><a href="kinhte.html">Kinh tế</a></li>
+            <li><a href="register.html">Đăng ký</a></li>
+           <li><a href="articledetail.html">Phản hồi</a></li>
+            <li><a href="dangbaimoi.html">Đăng bài mới</a></li>
+            <li><a href="dulich.html">Du lịch</a></li>
+            
+        </ul>
+    </nav>
+    <script src="../js/script.js"></script>
     </header>
-
-    <div id="mobileMenu" class="mobile-menu-overlay">
-        <div class="mobile-menu-header">
-            <div class="mobile-logo">
-                <h2>GIÁO DỤC NEWS</h2>
-                <p>Trang thông tin học thuật</p>
-            </div>
-            <button id="closeMenuBtn" class="close-btn"><i class="fas fa-times"></i></button>
-        </div>
-        
-        <nav class="mobile-nav">
-            <ul class="mobile-nav-list">
-                <li class="active"><a href="#">Tin mới nhất</a></li>
-                <li><a href="#">Tuyển sinh Đại học</a></li>
-                <li><a href="#">Đời sống sinh viên</a></li>
-                <li><a href="#">Công nghệ Giáo dục</a></li>
-                <li><a href="#">Góc nhìn chuyên gia</a></li>
-                <li><a href="#">Đăng bài mới</a></li>
-            </ul>
-        </nav>
-    </div>
-
     <main class="container main-content">
         <section>
             <h2 class="section-title">GIÁO DỤC</h2>
@@ -441,5 +433,6 @@ Ngày 16/4, Đại học Quốc gia TP.HCM thông tin sơ bộ kết quả thi �
             `;
         });
     </script>
+    <div id="footer-placeholder"></div>
 </body>
 </html>
