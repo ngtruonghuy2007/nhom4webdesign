@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giáo Dục - Tin Tức Tổng Hợp NEWS</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* =========================================
+           1. VARIABLES & RESET
+        ========================================= */
+        :root {
+            --clr-primary: #0056b3; /* Chuyển sang tone xanh dương chuẩn giáo dục */
+            --clr-secondary: #0088ff; 
+            --clr-text-main: #333333;
+            --clr-text-muted: #757575;
+            --clr-bg-body: #f4f7f6;
+            --clr-bg-card: #ffffff;
+            --clr-border: #eaeaea;
+            --z-header: 100;
+            --z-overlay: 9999;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--clr-bg-body);
+            color: var(--clr-text-main);
+            line-height: 1.5;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+        /* =========================================
+           2. HEADER MAIN
+        ========================================= */
+        .main-header {
+            background-color: var(--clr-bg-card);
+            border-bottom: 1px solid var(--clr-border);
+            position: sticky;
+            top: 0;
+            z-index: var(--z-header);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 65px;
+        }
+
+        .hamburger-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--clr-text-main);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .logo-container h2 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--clr-primary);
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+        .logo-container h2 span { color: #333; }
+
+        .header-actions a {
+            font-weight: 600;
+            color: var(--clr-primary);
+            font-size: 15px;
+        }
+
+        /* =========================================
+           3. OVERLAY MOBILE MENU
+        ========================================= */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--clr-bg-card);
+            z-index: var(--z-overlay);
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .mobile-logo h2 {
+            color: var(--clr-primary);
+            font-size: 22px;
+            font-weight: 800;
+        }
+        .mobile-logo p {
+            font-size: 10px;
+            color: var(--clr-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .close-btn {
+            font-size: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--clr-text-main);
+        }
+
+        .mobile-nav-list li {
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .mobile-nav-list a {
+            display: block;
+            padding: 18px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .mobile-nav-list a:hover {
+            background-color: #fafafa;
+            color: var(--clr-secondary);
+        }
+
+        .mobile-nav-list li.active a {
+            color: var(--clr-secondary);
+            background-color: #f4f9ff;
+        }
+
+        /* =========================================
+           4. LAYOUT NỘI DUNG 
+        ========================================= */
+        .main-content {
+            margin-top: 30px;
+            margin-bottom: 50px;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            border-bottom: 2px solid var(--clr-primary);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Grid bài viết */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card {
+            background: var(--clr-bg-card);
+            border: 1px solid var(--clr-border);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .news-card-body { 
+            padding: 15px; 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        .news-card-body .category {
+            color: var(--clr-primary);
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .news-card-body h3 {
+            font-size: 16px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .news-card-body p {
+            font-size: 14px;
+            color: var(--clr-text-muted);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .news-card-body .time {
+            margin-top: auto;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background: var(--clr-bg-card);
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid var(--clr-border);
+            margin-bottom: 20px;
+        }
+        .sidebar-widget h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--clr-border);
+            padding-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-wrapper">
+            <button id="openMenuBtn" class="hamburger-btn">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="logo-container">
+                <a href="#"><h2>GIÁO DỤC <span>NEWS</span></h2></a>
+            </div>
+            <div class="header-actions">
+                <a href="#"><i class="fas fa-search"></i> Tìm kiếm</a>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobileMenu" class="mobile-menu-overlay">
+        <div class="mobile-menu-header">
+            <div class="mobile-logo">
+                <h2>GIÁO DỤC NEWS</h2>
+                <p>Trang thông tin học thuật</p>
+            </div>
+            <button id="closeMenuBtn" class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <nav class="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li class="active"><a href="#">Tin mới nhất</a></li>
+                <li><a href="#">Tuyển sinh Đại học</a></li>
+                <li><a href="#">Đời sống sinh viên</a></li>
+                <li><a href="#">Công nghệ Giáo dục</a></li>
+                <li><a href="#">Góc nhìn chuyên gia</a></li>
+                <li><a href="#">Đăng bài mới</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="container main-content">
+        <section>
+            <h2 class="section-title">GIÁO DỤC</h2>
+            <div class="news-grid" id="newsContainer">
+                
+        <main class="container">
+    <div id="newsContainer" class="news-grid">
+        
+        <article class="news-item">
+            <div class="tooltip">
+                <a href="https://vnexpress.net/hoc-sinh-cap-2-3-chat-luong-cao-phai-dat-chuan-tieng-anh-ngang-dai-hoc-5072209.html">
+                    <img src="https://i1-vnexpress.vnecdn.net/2026/05/10/586340811-n-1778415565-3074-1778415770.jpg?w=300&h=180&q=100&dpr=2&fit=crop&s=B02kL2B-4ZxP4zdidVTj9Q">
+                    <h3>Học sinh cấp 2, 3 chất lượng cao phải đạt chuẩn tiếng Anh ngang đại học</h3>
+                </a>
+                <span class="tooltip-text">HÀ NỘI-Học sinh trường THCS, THPT chất lượng cao phải đạt năng lực ngoại ngữ B1, B2 (4.0-6.5 IELTS) - ngang với chuẩn đầu ra của sinh viên đại học.
+
+</span>
+            </div>
+        </article>
+
+        <article class="news-item">
+            <div class="tooltip">
+                <a href="https://vnexpress.net/giao-vien-nhan-vien-hop-dong-sap-duoc-tra-luong-sau-gan-6-thang-treo-5072118.html">
+                    <img src="https://i1-vnexpress.vnecdn.net/2026/05/10/giao-vien-mam-non-1778391759-3656-1778399748.jpg?w=240&h=144&q=100&dpr=2&fit=crop&s=NWq8PQLOqw3LPfOipa3SmQ">
+                    <h3>Giao viên nhân viên hợp đồng sắp được trả lương sau gần 6 tháng treo</h3>
+                </a>
+                <span class="tooltip-text">Hơn 200 giáo viên, hợp đồng sẽ được trả lương sau gần nửa năm bị "treo" do thay đổi chính sách, tổng khoảng 8,7 tỷ đồng,
+
+</span>
+            </div>
+        </article>
+
+        <article class="news-item">
+            <div class="tooltip">
+                <a href="https://vnexpress.net/truong-pho-thong-top-10-cua-anh-do-bo-tp-hcm-5071888.html">
+                    <img src="https://i1-vnexpress.vnecdn.net/2026/05/09/truong-king-s-college-tp-hcm-1-7797-7329-1778312589.png?w=240&h=144&q=100&dpr=2&fit=crop&s=gF2AAbgjqffAXPEF_tBYNg">
+                    <h3>Trường phổ thông top 10 của Anh do bộ TP.HCM</h3>
+                </a>
+                <span class="tooltip-text">Trường phổ thông tư thục gần 200 năm tuổi với 25% học sinh mỗi năm trúng tuyển Oxford, Cambridge và nhóm Ivy League - King’s College School, mở cơ sở đầu tiên ở TP HCM.
+
+</span>
+            </div>
+        </article>
+
+        <article class="news-item">
+            <div class="tooltip">
+                <a href="https://vnexpress.net/hoc-phi-6-truong-cua-dai-hoc-quoc-gia-tp-hcm-5071941.html">
+                    <img src="https://i1-vnexpress.vnecdn.net/2026/05/09/233a3725-1778322301-2523-1778324584.jpg?w=300&h=180&q=100&dpr=2&fit=crop&s=EpqT3mtCsHaUfqfUKYv8aw">
+                    <h3>Học phí 6 trường của Đại học Quốc gia TP.HCM</h3>
+                </a>
+                <span class="tooltip-text">6 trong 8 trường thành viên Đại học Quốc gia TP HCM tăng học phí, phổ biến 5-15%, riêng trường Đại học Công nghệ Thông tin tăng tối đa 40%.
+
+Đại học Quốc gia TP HCM (VNUHCM) là hệ thống đại học lớn nhất nước với quy mô hơn 100.000 sinh viên.
+
+
+</span>
+            </div>
+        </article>
+
+        <article class="news-item">
+            <div class="tooltip">
+                <a href="https://vnexpress.net/pho-diem-thi-danh-gia-nang-luc-dai-hoc-quoc-gia-tp-hcm-dot-1-nam-2026-chi-tiet-nhat-5063137.html">
+                    <img src="https://i1-vnexpress.vnecdn.net/2026/04/16/danh-gai-nang-luc-1776315954-8290-1776315983.jpg?w=180&h=108&q=100&dpr=2&fit=crop&s=e0QHVTOWJYdr0hHh5XNXRg">
+                    <h3>Phổ điểm thi đánh giá năng lực Đại học Quốc gia TP.HCM đợt 1 năm 2026 chi tiết nhất</h3>
+                </a>
+                <span class="tooltip-text">Vượt qua gần 133.500 thí sinh, thủ khoa đánh giá năng lực đợt 1 của Đại học Quốc gia TP HCM đạt 1098/1200 điểm.
+
+Ngày 16/4, Đại học Quốc gia TP.HCM thông tin sơ bộ kết quả thi đánh giá năng lực đợt 1.
+        </article>
+
+        </div>
+</main>
+                </div>
+        </section>
+
+        <aside>
+            <div class="sidebar-widget">
+                <h3>Tin xem nhiều</h3>
+                <ul style="font-size: 14px; display: flex; flex-direction: column; gap: 12px;">
+                    <li><a href="#" style="color: var(--clr-primary); font-weight: 500;">1. Điểm chuẩn xét học bạ năm 2026 dự kiến tăng nhẹ</a></li>
+                    <li><a href="#" style="color: var(--clr-text-main);">2. Sinh viên chật vật tìm phòng trọ đầu năm học</a></li>
+                    <li><a href="#" style="color: var(--clr-text-main);">3. Top 5 ứng dụng quản lý thời gian hiệu quả cho tân sinh viên</a></li>
+                    <li><a href="#" style="color: var(--clr-text-main);">4. ĐHQGHN công bố lịch thi đánh giá năng lực đợt 2</a></li>
+                    <li><a href="#" style="color: var(--clr-text-main);">5. Những lưu ý khi làm hồ sơ du học bằng tiếng Trung</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-widget" style="text-align: center;">
+                <span style="font-size: 11px; color: #999;">Góc quảng cáo</span>
+                <div style="background: #e9f5ff; height: 250px; margin-top: 5px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--clr-primary); border: 1px dashed var(--clr-primary); border-radius: 4px;">
+                    <i class="fas fa-graduation-cap" style="font-size: 30px; margin-bottom: 10px;"></i>
+                    <p style="font-weight: bold;">Hội thảo Du học 2026</p>
+                    <small>Đăng ký ngay hôm nay</small>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <script>
+        // --- LOGIC MENU ---
+        const mobileMenu = document.getElementById('mobileMenu');
+        const openMenuBtn = document.getElementById('openMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+        openMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = ''; 
+        });
+
+
+        const newsContainer = document.getElementById('newsContainer');
+        
+        newsData.forEach(item => {
+            newsContainer.innerHTML += `
+                <a href="#" class="news-card">
+                    <img src="${item.img}" alt="${item.title}">
+                    <div class="news-card-body">
+                        <span class="category">${item.category}</span>
+                        <h3>${item.title}</h3>
+                        <p>${item.summary}</p>
+                        <span class="time"><i class="far fa-clock"></i> ${item.time}</span>
+                    </div>
+                </a>
+            `;
+        });
+    </script>
+</body>
+</html>
