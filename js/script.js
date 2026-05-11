@@ -104,7 +104,7 @@ if (registerForm) {
         alert('Đăng ký thành công!');
         
         // Cập nhật tên file mới tại đây
-        window.location.href = 'trangchu.html'; 
+        window.location.href = 'index.html'; 
     });
 }
 document.addEventListener('DOMContentLoaded', function() {
@@ -165,3 +165,13 @@ const UserModule = {
 
 // Chạy kiểm tra ngay khi load trang
 UserModule.init();
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+    // Ngăn chặn hành vi tải lại trang mặc định của form
+    event.preventDefault(); 
+    
+    // Hiện thông báo (tùy chọn)
+    alert("Đăng ký thành công! Đang chuyển hướng về trang chủ...");
+    
+    // Chuyển hướng trang (Nhớ chỉnh lại "../index.html" nếu trang chủ ở thư mục gốc)
+    window.location.href = "index.html"; 
+});
