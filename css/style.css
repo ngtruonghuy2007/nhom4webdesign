@@ -305,10 +305,11 @@ body.football-page::after {
     z-index: 1;
     box-shadow: 0 0 50px rgba(0,0,0,0.1);
 }
-/* Hiệu ứng nảy khi nhấn nút */
+
+/* Hiệu ứng nảy cho nút Like */
 .like-bounce {
     animation: bounce 0.4s ease;
-    color: #e74c3c !important; /* Đổi sang màu đỏ khi đã nhấn */
+    color: #e74c3c !important; /* Đổi sang màu đỏ khi nhấn */
 }
 
 @keyframes bounce {
@@ -316,13 +317,23 @@ body.football-page::after {
     50% { transform: scale(1.4); }
 }
 
-.btn-like {
-    transition: all 0.2s;
-    cursor: pointer;
-    border: none;
-    background: none;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+/* Định dạng khung bình luận để nó hiện ngay dưới bài viết */
+.comment-item {
+    background: #f4f4f4; 
+    margin: 5px 0; 
+    padding: 8px; 
+    border-radius: 5px; 
+    display: flex; 
+    justify-content: space-between; 
+    font-size: 13px; 
+    border-left: 3px solid #003366;
+}
+
+.btn-thu-hoi {
+    color: red; 
+    border: none; 
+    background: none; 
+    cursor: pointer; 
+    font-size: 11px;
+    font-weight: bold;
 }
