@@ -79,7 +79,7 @@
         /* --- NAVBAR (Sticky) --- */
         .navbar { background: var(--bg-main); border-top: 1px solid var(--border-color); transition: box-shadow 0.3s ease; position: sticky; top: 0; z-index: 100; }
         .navbar.scrolled { box-shadow: var(--shadow); }
-        .nav-links { display: flex; gap: 30px; }
+        .nav-links { display: flex; gap: 10px; }
         .nav-links li a { display: block; padding: 15px 0; font-weight: 600; text-transform: uppercase; font-size: 14px; position: relative; }
         .nav-links li a.active, .nav-links li a:hover { color: var(--primary-color); }
         .nav-links li a::after {
@@ -179,6 +179,33 @@
             .nav-links::-webkit-scrollbar { height: 0px; }
             .search-box input { width: 150px; }
         }
+        /* 1. Menu Điều Hướng (Navigation) */
+.main-nav {
+    background-color: #1a1a1a;
+    padding: 15px 20px;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Yêu cầu sử dụng Flexbox */
+    gap: 20px;
+    justify-content: center; /* Căn giữa menu */
+}
+
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease; /* Chuyển màu mượt mà */
+}
+
+.main-nav a:hover {
+    background-color: #333333;
+}
     </style>
 </head>
 <body>
@@ -372,52 +399,64 @@
         </aside>
     </main>
 
-    <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-col brand-col">
-               <div class="logo-container">
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-row-top">
+                <nav class="footer-nav">
+                    <div class="nav-col">
+                        <a href="#" class="nav-bold">Trang chủ</a>
+                        
+                    </div>
+                    <div class="nav-col">
+                        <a href="kinhte.html" class="nav-bold">Kinh tế</a>
+                        
+                    </div>
+                    <div class="nav-col">
+                        <a href="thethao.html" class="nav-bold">Giải trí</a>
+                        <a href="thethao.html">Thể thao</a>
+                    
+                    </div>
+                    <div class="nav-col">
+                        <a href="dulich.html" class="nav-bold">Đời sống</a>
+                        <a href="dulich.html">Du lịch</a>
+                        <a href="giaoduc.html">Giáo dục</a>
+                    </div>
+                </nav>
+
+                <section class="footer-contact">
+                    <div class="contact-item">
+                        <p class="label">Tải ứng dụng</p>
+                        <button>App Store</button>
+                        <button>Google Play</button>
+                    </div>
+                    <div class="contact-item" style="margin-top: 15px;">
+                        <p class="label">Hotline hỗ trợ</p>
+                        <p><strong>0123.456.789</strong> (Hà Nội)</p>
+                        <p><strong>0987.654.321</strong> (TP. HCM)</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="footer-row-middle">
+                <div class="logo-container">
                    <a href="index.html"><img src="../images/logo.png" alt="logo" class="site-logo">
                 </div>
-                <p>Kênh thông tin du lịch, ẩm thực và văn hóa hàng đầu. Cập nhật tin tức nhanh chóng, chính xác.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <div class="footer-legal">
+                    <a href="#" style="margin-right: 15px;">Điều khoản</a>
+                    <a href="#" style="margin-right: 15px;">Bảo mật</a>
+                    <a href="#">Liên hệ quảng cáo</a>
+                </div>
+                <div class="footer-social">
+                    <span>Theo dõi: FB | YT | TT</span>
                 </div>
             </div>
-            <div class="footer-col">
-                <h3>Chuyên mục</h3>
-                <ul>
-                    <li><a href="index.html">Tin tức Du lịch</a></li>
-                    <li><a href="index.html">Điểm đến Hot</a></li>
-                    <li><a href="index.html">Ẩm thực 3 miền</a></li>
-                    <li><a href="index.html">Cẩm nang du lịch</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Hỗ trợ</h3>
-                <ul>
-                    <li><a href="index.html">Về chúng tôi</a></li>
-                    <li><a href="index.html">Liên hệ quảng cáo</a></li>
-                    <li><a href="index.html">Chính sách bảo mật</a></li>
-                    <li><a href="index.html">Điều khoản sử dụng</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Tải ứng dụng</h3>
-                <p>Trải nghiệm tốt hơn trên ứng dụng di động.</p>
-                <div class="app-links">
-                    <button class="app-btn"><i class="fab fa-apple"></i> App Store</button>
-                    <button class="app-btn"><i class="fab fa-google-play"></i> Google Play</button>
-                </div>
+
+            <div class="footer-row-bottom">
+                <p>© 2026 Dự án nhóm Sinh viên VNU. Mọi quyền được bảo lưu.</p>
+                <p>Địa chỉ: Xuân Thủy, Cầu Giấy, Hà Nội.</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2026 TravelNews. Thiết kế dành riêng cho bạn.</p>
-            </div>
-        </div>
-    </footer>
+    </footer> 
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
