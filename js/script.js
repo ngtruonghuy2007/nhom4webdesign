@@ -131,3 +131,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// MODULE QUẢN LÝ TÀI KHOẢN ĐỘC LẬP
+const UserModule = {
+    // 1. Kiểm tra trạng thái khi vừa vào trang
+    init: function() {
+        const savedName = localStorage.getItem('user_registered_name');
+        if (savedName) {
+            this.showUser(savedName);
+        }
+    },
+
+    // 2. Hàm để gọi khi người dùng nhấn "Đăng ký" thành công
+    registerSuccess: function(name) {
+        localStorage.setItem('user_registered_name', name);
+        this.showUser(name);
+    },
+
+    // 3. Hiển thị lên giao diện
+    showUser: function(name) {
+        const module = document.getElementById('independent-user-module');
+        const nameLabel = document.getElementById('display-user-name');
+        
+        if (module && nameLabel) {
+            nameLabel.innerText = name;
+            module.style.display = 'inline-block'; // Hiện lên
+            
+            // Nếu có nút Đăng ký cũ trên header, bạn có thể ẩn nó đi ở đây
+            const oldAuthBtn = document.querySelector('.btn-auth-old'); 
+            if(oldAuthBtn) oldAuthBtn.style.display = 'none';
+        }
+    }
+};
+
+// Chạy kiểm tra ngay khi load trang
+UserModule.init();

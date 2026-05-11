@@ -34,8 +34,8 @@
             padding: 15px 0;
             border-bottom: 1px solid #eee;
         }
-        .site-logo { height: 50px; }
-        .nav-menu { display: flex; list-style: none; gap: 20px; }
+        .site-logo { height: 110px; }
+        .nav-menu { display: flex; list-style: none; gap: 10px; }
         .nav-menu a { text-decoration: none; color: #333; font-weight: bold; }
 
         /* Tiêu đề chuyên mục */
@@ -111,21 +111,92 @@
         .nav-bold { font-weight: bold; margin-bottom: 5px; }
         .footer-row-middle { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
         .footer-row-bottom { text-align: center; padding-top: 20px; color: #666; }
+        /* Container phần tin cuối bài */
+.bottom-news-section {
+    margin-top: 40px;
+}
+
+/* Khối mỗi bài viết nằm ngang */
+.horizontal-article {
+    display: flex;
+    gap: 25px; /* Khoảng cách giữa ảnh và chữ */
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0; /* Đường kẻ ngang mờ giữa các bài */
+}
+
+/* Phần ảnh bên trái */
+.horizontal-article .article-thumb {
+    flex: 0 0 320px; /* Cố định chiều rộng ảnh, bạn có thể chỉnh to/nhỏ tùy ý */
+}
+
+.horizontal-article .article-thumb img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+/* Phần nội dung bên phải */
+.horizontal-article .article-info {
+    flex: 1; /* Chiếm phần diện tích còn lại */
+    display: flex;
+    flex-direction: column;
+}
+
+.horizontal-article .article-category {
+    font-size: 15px;
+    color: #888; /* Màu xám chữ nhạt */
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.horizontal-article .article-title {
+    margin: 0 0 15px 0;
+    font-size: 22px;
+    line-height: 1.4;
+}
+
+.horizontal-article .article-title a {
+    text-decoration: none;
+    color: #222; /* Màu đen đậm */
+}
+
+.horizontal-article .article-title a:hover {
+    color: #0056b3; /* Đổi màu khi di chuột qua */
+}
+
+/* Chấm tròn list bài liên quan */
+.horizontal-article .article-related {
+    margin: 0;
+    padding-left: 18px; /* Lùi vào một chút cho dấu chấm tròn */
+    color: #555;
+}
+
+.horizontal-article .article-related li {
+    margin-bottom: 8px;
+    list-style-type: circle; /* Dạng chấm tròn rỗng (o) giống trong hình */
+}
+
+.horizontal-article .article-related li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+}
+
+.horizontal-article .article-related li a:hover {
+    text-decoration: underline;
+}
     </style>
 </head>
 <body>
     <header class="container">
         <nav class="navbar">
         <div class="logo-container">
-<<<<<<< HEAD:pages/trangchu.html
-            <a href="trangchu.html"><img src="../images/logo.png" alt="logo" class="site-logo"> 
-=======
-            <a href="index.html"><img src="images/logo.png" alt="logo" class="site-logo"> 
->>>>>>> 7e372c27d6a1a0e26fbedf3399d598b75bcde3e3:pages/index.html
+            <a href="index.html"><img src="../images/logo.png" alt="logo" class="site-logo"> 
             </a>
         </div>
 
-        <button class="menu-toggle" id="btn-toggle">
+         <button class="menu-toggle" id="btn-toggle">
             <span></span>
             <span></span>
             <span></span>
@@ -138,6 +209,9 @@
             <li><a href="register.html">Đăng ký</a></li>
            <li><a href="articledetail.html">Phản hồi</a></li>
             <li><a href="dangbaimoi.html">Đăng bài mới</a></li>
+            <li><a href="giaoduc.html">Giáo dục</a></li>
+            <li><a href="dulich.html">Du lịch</a></li>
+            
         </ul>
     </nav>
     <script src="../js/script.js"></script>
@@ -157,8 +231,8 @@
                     </div>
                 </article>
             </div>
-
-            <h2 class="section-title">Tin 24h</h2>
+       
+            <h2 class="section-title">Báo chí</h2>
             
             <div class="news-grid">
                 <article>
@@ -241,6 +315,158 @@
                     </div>
                 </article>
             </div>
+            <h2 class="section-title">Báo chí</h2>
+            
+            <div class="news-grid">
+                <article>
+                    <div class="tooltip">
+                        <a href="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/23/dai-hoc-da-nang-1776953833490461345153.jpg">
+                            <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/23/dai-hoc-da-nang-1776953833490461345153.jpg" alt="11 trường Việt">
+                            <h3>11 trường Việt vào bảng xếp hạng ĐH tốt nhất châu Á, đa số tụt hạng</h3>
+                        </a>
+                        <span class="tooltip-text">11 trường Việt vào bảng xếp hạng ĐH tốt nhất châu Á, đa số tụt hạng</span>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="tooltip">
+                        <a href="https://thanhnien.vn/thanh-hoa-set-cuc-lon-danh-xuong-dinh-nui-phia-tay-185260423092853333.htm">
+                            <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/23/base64-1776913412150526131017.jpeg">
+                            <h3>Thanh Hóa: Sét cực lớn đánh xuống đỉnh núi phía tây</h3>
+                        </a>
+                        <span class="tooltip-text">Thanh Hóa: Sét cực lớn đánh xuống đỉnh núi phía tây</span>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="tooltip">
+                        <a href="https://thanhnien.vn/my-van-dung-cong-nghe-chong-uav-cua-ukraine-du-ong-trump-che-185260423175721511.htm">
+                            <img src="https://images2.thanhnien.vn/zoom/192_120/528068263637045248/2026/4/23/avatar1776955344683-17769553454291580923067.jpeg">
+                            <h3>Mỹ vẫn dùng công nghệ chống UAV của Ukraine dù ông Trump 'chê'</h3>
+                        </a>
+                        <span class="tooltip-text">Mỹ vẫn dùng công nghệ chống UAV của Ukraine dù ông Trump 'chê'</span>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="tooltip">
+                        <a href="https://thanhnien.vn/cuu-thu-khoa-truong-dh-ngoai-thuong-voi-lua-chon-lui-de-tien-185260422182832201.htm">
+                            <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/22/4-ngoc-nhon-chia-se-niem-tu-hao-va-hanh-phuc-khi-dien-trang-phuc-ao-dai-va-tu-gioi-thieu-truoc-ban-be-cac-nuocanh-nvcc-online-1776857060801611508471.jpg">
+                            <h3>Cựu thủ khoa Trường ĐH Ngoại thương với lựa chọn 'lùi để tiến'</h3>
+                        </a>
+                        <span class="tooltip-text">Cựu thủ khoa Trường ĐH Ngoại thương với lựa chọn 'lùi để tiến'</span>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="tooltip">
+                        <a href="https://thanhnien.vn/cong-an-tphcm-dam-bao-100-hoc-sinh-co-cccd-truoc-ky-thi-tot-nghiep-2026-185260423160329182.htm">
+                            <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/23/cong-an-tphcm-cap-cccd-hoc-sinh-ra-soat-sim-chinh-chu-17769349301801874522451.jpeg">
+                            <h3>Công an TP.HCM đảm bảo 100% học sinh có CCCD trước kỳ thi tốt nghiệp 2026</h3>
+                        </a>
+                        <span class="tooltip-text">Công an TP.HCM đảm bảo 100% học sinh có CCCD trước kỳ thi tốt nghiệp 2026</span>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="tooltip">
+                        <a href="https://www.24h.com.vn/kinh-doanh/thi-truong-tien-so-hom-na-du-bao-bitcoin-co-the-rot-xuong-30000-usd-c161a1741791.html">
+                            <img src="https://icdn.24h.com.vn/upload/1-2026/images/2026-02-28/255x170/1772281885-387-thumbnail-width740height495_anh_cat_3_2.jpg">
+                            <h3>Thị trường tiền số hôm nay, 3-3: Chuyên gia dự báo Bitcoin có thể rớt xuống 30.000 USD</h3>
+                        </a>
+                        <span class="tooltip-text">Thị trường tiền số hôm nay, 3-3: Chuyên gia dự báo Bitcoin có thể rớt xuống 30.000 USD</span>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="tooltip">
+                        <a href="https://vnexpress.net/ong-nguyen-duy-hung-noi-ly-do-ssi-chua-tham-gia-tai-san-so-5066340.html">
+                            <img src="https://i1-kinhdoanh.vnecdn.net/2026/04/23/SSI-3-JPG-1776938836-3756-1776939032.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=Nb7Z2hadVc1degppZYSRVQ">
+                            <h3>Ông Nguyễn Duy Hưng nói lý do SSI chưa tham gia tài sản số</h3>
+                        </a>
+                        <span class="tooltip-text">Ông Nguyễn Duy Hưng nói lý do SSI chưa tham gia tài sản số</span>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="tooltip">
+                        <a href="https://www.nxbtre.com.vn/sach/nhung-phong-su-ve-chien-tranh-viet-nam-13171.html">
+                            <img src="https://www.nxbtre.com.vn/Images/Book/NXBTreStoryFull_24382015_023833.jpg">
+                            <h3>NHỮNG PHÓNG SỰ VỀ CHIẾN TRANH VIỆT NAM</h3>
+                        </a>
+                        <span class="tooltip-text">NHỮNG PHÓNG SỰ VỀ CHIẾN TRANH VIỆT NAM</span>
+                    </div>
+                </article>
+            </div>
+            <div class="bottom-news-section">
+    
+    <article class="horizontal-article">
+        <div class="article-thumb">
+            <a href="#">
+                <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/23/base64-1776913412150526131017.jpeg" alt="Messi">
+            </a>
+        </div>
+        <div class="article-info">
+            <span class="article-category">Bóng đá Quốc tế</span>
+            <h3 class="article-title">
+                <a href="#">Messi chúc mừng Barcelona sớm vô địch La Liga, Yamal chính thức vượt mặt Ronaldo</a>
+            </h3>
+            <ul class="article-related">
+                <li><a href="#">Messi thiết lập cột mốc lịch sử mới tại MLS</a></li>
+            </ul>
+        </div>
+    </article>
+
+    <article class="horizontal-article">
+        <div class="article-thumb">
+            <a href="#">
+                <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/22/4-ngoc-nhon-chia-se-niem-tu-hao-va-hanh-phuc-khi-dien-trang-phuc-ao-dai-va-tu-gioi-thieu-truoc-ban-be-cac-nuocanh-nvcc-online-1776857060801611508471.jpg" alt="Lê Phương">
+            </a>
+        </div>
+        <div class="article-info">
+            <span class="article-category">Đời nghệ sĩ</span>
+            <h3 class="article-title">
+                <a href="#">Lê Phương nói gì về 2 vai diễn 'gây sốt' màn ảnh nhỏ?</a>
+            </h3>
+            <ul class="article-related">
+                <li><a href="#">Lê Phương tiết lộ cảnh quay 'đau đớn đến kiệt sức' trong 'Bóng ma hạnh phúc'</a></li>
+            </ul>
+        </div>
+    </article>
+    <article class="horizontal-article">
+        <div class="article-thumb">
+            <a href="#">
+                <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/22/4-ngoc-nhon-chia-se-niem-tu-hao-va-hanh-phuc-khi-dien-trang-phuc-ao-dai-va-tu-gioi-thieu-truoc-ban-be-cac-nuocanh-nvcc-online-1776857060801611508471.jpg" alt="Lê Phương">
+            </a>
+        </div>
+        <div class="article-info">
+            <span class="article-category">Đời nghệ sĩ</span>
+            <h3 class="article-title">
+                <a href="#">Lê Phương nói gì về 2 vai diễn 'gây sốt' màn ảnh nhỏ?</a>
+            </h3>
+            <ul class="article-related">
+                <li><a href="#">Lê Phương tiết lộ cảnh quay 'đau đớn đến kiệt sức' trong 'Bóng ma hạnh phúc'</a></li>
+            </ul>
+        </div>
+    </article>
+    <article class="horizontal-article">
+        <div class="article-thumb">
+            <a href="#">
+                <img src="https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2026/4/22/4-ngoc-nhon-chia-se-niem-tu-hao-va-hanh-phuc-khi-dien-trang-phuc-ao-dai-va-tu-gioi-thieu-truoc-ban-be-cac-nuocanh-nvcc-online-1776857060801611508471.jpg" alt="Lê Phương">
+            </a>
+        </div>
+        <div class="article-info">
+            <span class="article-category">Đời nghệ sĩ</span>
+            <h3 class="article-title">
+                <a href="#">Lê Phương nói gì về 2 vai diễn 'gây sốt' màn ảnh nhỏ?</a>
+            </h3>
+            <ul class="article-related">
+                <li><a href="#">Lê Phương tiết lộ cảnh quay 'đau đớn đến kiệt sức' trong 'Bóng ma hạnh phúc'</a></li>
+            </ul>
+        </div>
+    </article>
+
+</div>
         </section>
 
         <!-- CỘT PHẢI (SIDEBAR) -->
@@ -276,7 +502,59 @@
                     <span class="tooltip-text">Lỡ cả đời này không rực rỡ thì sao?</span>
                 </div>
             </article>
+            <h2 class="section-title">Giới trẻ</h2>
+            
+            <article class="list-article">
+                <div class="tooltip">
+                    <a href="https://vtv.vn/cau-chuyen-khong-an-thit-ga-va-noi-lo-ve-suat-an-hoc-duong-100260414091927562.htm">
+                        <img src="https://cdn-images.vtv.vn/thumb_w/1200/66349b6076cb4dee98746cf1/2026/04/14/package-media-89358684623031381287923-47721575336091762956340.png">
+                        <h3>Câu chuyện 'không ăn thịt gà' và nỗi lo về suất ăn học đường</h3>
+                    </a>
+                    <span class="tooltip-text">Câu chuyện 'không ăn thịt gà' và nỗi lo về suất ăn học đường</span>
+                </div>
+            </article>
+
+            <article class="list-article">
+                <div class="tooltip">
+                    <a href="https://www.24h.com.vn/giai-tri/do-mixi-phan-ung-bat-ngo-khi-vtv24-vao-xem-livestream-c731a1440137.html">
+                        <img src="https://icdn.24h.com.vn/upload/1-2023/images/2023-02-13/domixi1a-1676252374-255-width740height403.jpg">
+                        <h3>Độ Mixi phản ứng bất ngờ khi "VTV24" vào xem livestream</h3>
+                    </a>
+                    <span class="tooltip-text">Độ Mixi phản ứng bất ngờ khi "VTV24" vào xem livestream</span>
+                </div>
+            </article>
+
+            <article class="list-article">
+                <div class="tooltip">
+                    <a href="https://tienphong.vn/lo-ca-doi-nay-khong-ruc-ro-thi-sao-post1832769.tpo">
+                        <img src="https://cdn.tienphong.vn/images/d68beb42bd946edae0dad3afec7eb30e4842970d1acf40ea36489d3d7190155073c47782950286750bd5445f33fb7529cc9f0510f7239cd4c049210240527d6127f45b0775037daf785bac90d477bf9d/z7687497933802-e44114d70c8a523249dc77f95248fd41.jpg.avif">
+                        <h3>Lỡ cả đời này không rực rỡ thì sao?</h3>
+                    </a>
+                    <span class="tooltip-text">Lỡ cả đời này không rực rỡ thì sao?</span>
+                </div>
+            </article>
+             <article class="list-article">
+                <div class="tooltip">
+                    <a href="https://tienphong.vn/lo-ca-doi-nay-khong-ruc-ro-thi-sao-post1832769.tpo">
+                        <img src="https://cdn.tienphong.vn/images/d68beb42bd946edae0dad3afec7eb30e4842970d1acf40ea36489d3d7190155073c47782950286750bd5445f33fb7529cc9f0510f7239cd4c049210240527d6127f45b0775037daf785bac90d477bf9d/z7687497933802-e44114d70c8a523249dc77f95248fd41.jpg.avif">
+                        <h3>Lỡ cả đời này không rực rỡ thì sao?</h3>
+                    </a>
+                    <span class="tooltip-text">Lỡ cả đời này không rực rỡ thì sao?</span>
+                </div>
+            </article>
+             <article class="list-article">
+                <div class="tooltip">
+                    <a href="https://tienphong.vn/lo-ca-doi-nay-khong-ruc-ro-thi-sao-post1832769.tpo">
+                        <img src="https://cdn.tienphong.vn/images/d68beb42bd946edae0dad3afec7eb30e4842970d1acf40ea36489d3d7190155073c47782950286750bd5445f33fb7529cc9f0510f7239cd4c049210240527d6127f45b0775037daf785bac90d477bf9d/z7687497933802-e44114d70c8a523249dc77f95248fd41.jpg.avif">
+                        <h3>Lỡ cả đời này không rực rỡ thì sao?</h3>
+                    </a>
+                    <span class="tooltip-text">Lỡ cả đời này không rực rỡ thì sao?</span>
+                </div>
+            </article>
+            
+
         </aside>
+
     </main>
 
     <footer class="site-footer">
@@ -285,18 +563,17 @@
                 <nav class="footer-nav">
                     <div class="nav-col">
                         <a href="#" class="nav-bold">Trang chủ</a>
-                        <a href="#">Thời sự</a>
-                        <a href="#">Thế giới</a>
+                        
                     </div>
                     <div class="nav-col">
-                        <a href="#" class="nav-bold">Kinh doanh</a>
-                        <a href="#">Bất động sản</a>
-                        <a href="#">Chứng khoán</a>
+                        <a href="kinhte.html" class="nav-bold">Kinh doanh</a>
+                        <a href="kinhte.html">Bất động sản</a>
+                        <a href="kinhte.html">Chứng khoán</a>
                     </div>
                     <div class="nav-col">
-                        <a href="#" class="nav-bold">Giải trí</a>
-                        <a href="#">Thể thao</a>
-                        <a href="#">Pháp luật</a>
+                        <a href="thethao.html" class="nav-bold">Giải trí</a>
+                        <a href="thethao.html">Thể thao</a>
+                    
                     </div>
                     <div class="nav-col">
                         <a href="#" class="nav-bold">Đời sống</a>
@@ -321,7 +598,7 @@
 
             <div class="footer-row-middle">
                 <div class="logo-container">
-                   <a href="index.html"><img src="images/logo.png" alt="logo" class="site-logo">
+                   <a href="index.html"><img src="../images/logo.png" alt="logo" class="site-logo">
                 </div>
                 <div class="footer-legal">
                     <a href="#" style="margin-right: 15px;">Điều khoản</a>

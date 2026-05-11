@@ -267,27 +267,73 @@ body.football-page::after {
     padding: 5px 15px;
 }
 /* ... Bạn có thể copy các phần search-box, news-card còn lại dán vào đây ... */
-/* 1. Ép các bài báo nằm thành hàng ngang (để chúng nhỏ lại) */
-#newsContainer, .news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Chia cột tự động */
-    gap: 20px;
-    padding: 20px;
+
+/* --- TRANG TRÍ NỀN MỜ PHÍA SAU (CHỈ DÙNG CHO TRANG BÓNG ĐÁ) --- */
+
+/* Thiết lập chung cho 2 bên nền */
+body.football-page::before,
+body.football-page::after {
+    content: "";
+    position: fixed;   /* Giữ ảnh đứng yên khi cuộn trang */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 350px;      /* Kích thước ảnh mờ */
+    height: 350px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.06;     /* Độ mờ 6% (rất nhẹ để không làm rối mắt) */
+    z-index: -1;       /* Nằm dưới cùng */
+    pointer-events: none;
 }
 
-/* 2. Ép tất cả ảnh có kích thước bằng thừa tự động cắt */
-.news-item img {
-    width: 100%;           /* Rộng hết khung bài báo */
-    height: 180px;         /* Ép chiều cao cố định là 180px cho mọi ảnh */
-    object-fit: cover;     /* Cực kỳ quan trọng: Ảnh tự cắt để không bị méo */
-    display: block;
-    border-radius: 5px;    /* Bo góc cho đẹp */
+/* Ảnh bên trái: Huy hiệu Đảng (Búa Liềm) */
+body.football-page::before {
+    left: 20px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b2/Hammer_and_sickle.svg');
 }
 
-/* 3. Chỉnh cho tiêu đề nhỏ gọn lại */
-.news-item h3 {
-    font-size: 16px;
-    margin-top: 10px;
-    line-height: 1.4;
-    color: #333;
+/* Ảnh bên phải: Quốc huy Việt Nam */
+body.football-page::after {
+    right: 20px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/03/Emblem_of_Vietnam.svg');
+}
+
+/* Đảm bảo nội dung bài viết luôn nổi bật trên nền trắng tinh */
+.football-page .container {
+    background: #ffffff;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 50px rgba(0,0,0,0.1);
+}
+
+/* Hiệu ứng nảy cho nút Like */
+.like-bounce {
+    animation: bounce 0.4s ease;
+    color: #e74c3c !important; /* Đổi sang màu đỏ khi nhấn */
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+}
+
+/* Định dạng khung bình luận để nó hiện ngay dưới bài viết */
+.comment-item {
+    background: #f4f4f4; 
+    margin: 5px 0; 
+    padding: 8px; 
+    border-radius: 5px; 
+    display: flex; 
+    justify-content: space-between; 
+    font-size: 13px; 
+    border-left: 3px solid #003366;
+}
+
+.btn-thu-hoi {
+    color: red; 
+    border: none; 
+    background: none; 
+    cursor: pointer; 
+    font-size: 11px;
+    font-weight: bold;
 }

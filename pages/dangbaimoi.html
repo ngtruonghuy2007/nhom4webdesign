@@ -14,68 +14,51 @@
 <body>
 <nav class="navbar">
         <div class="logo-container">
-<<<<<<< HEAD
 
             <a href="index.html"><img src="../images/logo.png" alt="logo" class="site-logo"> 
-            <a href="trangchu.html"><img src="images/logo.png" alt="logo" class="site-logo"> 
-=======
-            <a href="index.html"><img src="images/logo.png" alt="logo" class="site-logo"> 
->>>>>>> 7e372c27d6a1a0e26fbedf3399d598b75bcde3e3
             </a>
         </div>
+ <button class="menu-toggle" id="btn-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-       <button class="menu-toggle" id="btn-toggle" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
+
 
 
         <ul class="nav-menu" id="nav-list">
-<<<<<<< HEAD
-            <li><a href="./pages/index.html">Trang chủ</a></li>
+            <li><a href="./index.html">Trang chủ</a></li>
             <li><a href="../pages/thethao.html">Thể thao</a></li>
             <li><a href="../pages/kinhte.html">Kinh tế</a></li>
             <li><a href="../pages/register.html">Đăng ký</a></li>
-           <li><a href="../pages/articledetail.html">Phản hồi</a></li>
+            <li><a href="../pages/articledetail.html">Phản hồi</a></li>
             <li><a href="../pages/dangbaimoi.html">Đăng bài mới</a></li>
-            <li><a href="trangchu.html">Trang chủ</a></li>
-=======
-            <li><a href="index.html">Trang chủ</a></li>
->>>>>>> 7e372c27d6a1a0e26fbedf3399d598b75bcde3e3
-            <li><a href="thethao.html">Thể thao</a></li>
-            <li><a href="kinhte.html">Kinh tế</a></li>
-            <li><a href="register.html">Đăng ký</a></li>
-           <li><a href="articledetail.html">Phản hồi</a></li>
-            <li><a href="index.html">Đăng bài mới</a></li>
-            <li><a href="dangbaimoi.html">Đăng bài mới</a></li>
+             <li><a href="giaoduc.html">Giáo dục</a></li>
+            <li><a href="dulich.html">Du lịch</a></li>
         </ul>
-<!-- Bổ sung Khung tìm kiếm -->
-        <div class="search-box">
-            <input type="text" placeholder="Tìm kiếm tin tức...">
-            <button type="button">🔍</button>
-        </div>
 
     </nav>
+    <div class="main-content" style="padding: 20px;">
     <h3>Đăng bài mới</h3>
-    <input id="tieuDe" placeholder="Tiêu đề">
-    <textarea id="noiDung" placeholder="Nội dung"></textarea>
-    <div style="font-size: 0.9rem; color: #555; margin-top: 10px; display: flex; justify-content: space-between;">
-    <span>Số chữ đang viết: <strong id="wordCount">0</strong></span>
-    <span id="timeStatus" style="display: none; color: #cc0000;">🕒 Đã lưu nháp: <span id="timeElapsed">0 phút trước</span></span>
+    <input type="text" id="tieuDe" placeholder="Tiêu đề" style="width: 100%; margin-bottom: 10px;">
+    <textarea id="noiDung" placeholder="Nội dung" style="width: 100%; height: 100px;"></textarea>
+    
+    <div style="margin: 10px 0;">
+        Số chữ đang viết: <strong id="wordCount">0</strong>
+    </div>
+    <button id="btn-dang" style="background: #003366; color: white; padding: 8px 15px; border: none; cursor: pointer;">Đăng bài</button>
 </div>
-    <button id="btn-dang">Đăng bài</button>
-
-    <h3>Danh sách bài báo</h3>
-    <div id="ketQua"></div>
+    <hr>
+<section style="padding: 20px;">
+    <h3>Bảng tin hệ thống</h3>
+    <div id="ketQua">
+        <p>Đang tải bài viết và nhận xét...</p>
+    </div>
+</section>
 
     <script>
-        // Dữ liệu mẫu
-var dsBaiBao = JSON.parse(localStorage.getItem('danhSachBaiBao')) || [
-    { tieuDe: "Học JS rất vui", noiDung: "Javascript là ngôn ngữ lập trình phổ biến nhất thế giới hiện nay." },
-    { tieuDe: "Chào năm nhất", noiDung: "Chào mừng các bạn tân sinh viên đến với ngành công nghệ thông tin." }
-];
-
+      
         // 2. Hàm hiển thị
         function hienThi() {
             var html = "";
@@ -137,4 +120,8 @@ var dsBaiBao = JSON.parse(localStorage.getItem('danhSachBaiBao')) || [
 
     <script src="../js/data.js"></script>
 </body>
+<footer>
+    <a href="footer.html">
+            </a>
+</footer>
 </html>
